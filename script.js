@@ -344,6 +344,65 @@ async function applyAdminContent() {
   if (data['pq-cta-text']) setText('.pq-cta p', data['pq-cta-text']);
   if (data['pq-cta-btn'])  setText('.pq-cta .btn', data['pq-cta-btn']);
 
+  // Section headers — Soluções
+  if (data['sol-eyebrow']) setText('.solucoes .eyebrow', data['sol-eyebrow']);
+  if (data['sol-h2']) {
+    const el = document.querySelector('.solucoes h2');
+    if (el) el.innerHTML = data['sol-h2'].replace(/\{([^}]*)\}/g, '<span class="or">$1</span>');
+  }
+
+  // Section headers — Resultados
+  if (data['res-eyebrow']) setText('.resultados .eyebrow', data['res-eyebrow']);
+  if (data['res-h2']) {
+    const el = document.querySelector('.resultados h2');
+    if (el) el.innerHTML = data['res-h2'].replace(/\{([^}]*)\}/g, '<span class="or">$1</span>');
+  }
+
+  // Section headers — Fundadores
+  if (data['fnd-eyebrow']) setText('.fundadores .eyebrow', data['fnd-eyebrow']);
+  if (data['fnd-h2'])  setText('.fundadores__title', data['fnd-h2']);
+  if (data['fnd-sub']) setText('.fundadores__sub',   data['fnd-sub']);
+
+  // Section headers — Produtos
+  if (data['prod-sec-eyebrow']) setText('.produtos .eyebrow', data['prod-sec-eyebrow']);
+  if (data['prod-sec-h2']) {
+    const el = document.querySelector('.produtos h2');
+    if (el) el.innerHTML = data['prod-sec-h2'].replace(/\{([^}]*)\}/g, '<span class="or">$1</span>');
+  }
+  if (data['prod-sec-sub']) setText('.produtos__sub', data['prod-sec-sub']);
+
+  // Trust bar
+  if (data['trust-label']) setText('.hero__trust > span', data['trust-label']);
+  const trustSpans = document.querySelectorAll('.hero__trust-logos span');
+  [1,2,3,4,5].forEach((n, i) => {
+    if (data[`trust-${n}`] && trustSpans[i]) trustSpans[i].textContent = data[`trust-${n}`];
+  });
+
+  // FAQ section header
+  if (data['faq-eyebrow']) setText('.faq .eyebrow', data['faq-eyebrow']);
+  if (data['faq-h2']) {
+    const el = document.querySelector('.faq h2');
+    if (el) el.innerHTML = data['faq-h2'].replace(/\{([^}]*)\}/g, '<span class="or">$1</span>');
+  }
+  if (data['faq-sub']) setText('.faq__left > p', data['faq-sub']);
+
+  // FAQ items
+  if (Array.isArray(data.faq)) {
+    const items = document.querySelectorAll('.faq-item');
+    data.faq.forEach((f, i) => {
+      const item = items[i];
+      if (!item) return;
+      const btn  = item.querySelector('.faq-item__q');
+      const ansP = item.querySelector('.faq-item__a p');
+      if (btn && f.q) {
+        const icon = btn.querySelector('.faq-item__icon');
+        btn.textContent = f.q;
+        if (icon) btn.appendChild(icon);
+      }
+      if (ansP && f.a) ansP.textContent = f.a;
+    });
+  }
+
   // Videos
   if (Array.isArray(data.videos) && data.videos.length) {
     const grid = document.getElementById('portfolio-grid');
