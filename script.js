@@ -29,7 +29,15 @@ function buildVideoEmbed(v) {
   } else if (vmId) {
     embed = `<iframe src="https://player.vimeo.com/video/${vmId}" frameborder="0" allowfullscreen loading="lazy" title="${v.title}"></iframe>`;
   } else if (gdId) {
-    embed = `<iframe src="https://drive.google.com/file/d/${gdId}/preview" frameborder="0" allowfullscreen loading="lazy" title="${v.title}" allow="autoplay"></iframe>`;
+    // Click-to-load poster: avoids Drive's chunky native player UI on mobile
+    // (the iframe only mounts when the user actually clicks play).
+    const safeTitle = (v.title || '').replace(/"/g, '&quot;');
+    embed = `<button type="button" class="vid-poster" data-drive-id="${gdId}" data-title="${safeTitle}" aria-label="Reproduzir ${safeTitle}">
+      <img class="vid-poster__img" src="https://drive.google.com/thumbnail?id=${gdId}&sz=w1000" alt="" loading="lazy" onerror="this.style.display='none'" />
+      <span class="vid-poster__play" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+      </span>
+    </button>`;
   } else if (v.url.match(/\.(mp4|webm|ogg)(\?|$)/i)) {
     embed = `<video controls playsinline preload="metadata"><source src="${v.url}" /></video>`;
   } else {
@@ -430,6 +438,24 @@ async function applyAdminContent() {
 
 }
 applyAdminContent();
+
+// ── DRIVE VIDEO: click-to-load ──────────────
+// Mounts the Drive iframe only after the user clicks the poster — keeps the
+// initial page light and dodges Drive's heavy native player on mobile.
+document.addEventListener('click', (e) => {
+  const poster = e.target.closest('.vid-poster');
+  if (!poster) return;
+  const driveId = poster.dataset.driveId;
+  if (!driveId) return;
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
+  iframe.setAttribute('frameborder', '0');
+  iframe.setAttribute('allowfullscreen', '');
+  iframe.setAttribute('allow', 'autoplay');
+  iframe.setAttribute('loading', 'lazy');
+  iframe.setAttribute('title', poster.dataset.title || '');
+  poster.replaceWith(iframe);
+});
 
 // ── NAV: scroll effect ──────────────────────
 const nav = document.getElementById('nav');
