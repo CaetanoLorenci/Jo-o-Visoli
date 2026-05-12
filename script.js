@@ -385,14 +385,6 @@ async function applyAdminContent() {
   if (data['fnd-h2'])  setText('.fundadores__title', data['fnd-h2']);
   if (data['fnd-sub']) setText('.fundadores__sub',   data['fnd-sub']);
 
-  // Section headers — Produtos
-  if (data['prod-sec-eyebrow']) setText('.produtos .eyebrow', data['prod-sec-eyebrow']);
-  if (data['prod-sec-h2']) {
-    const el = document.querySelector('.produtos h2');
-    if (el) el.innerHTML = data['prod-sec-h2'].replace(/\{([^}]*)\}/g, '<span class="or">$1</span>');
-  }
-  if (data['prod-sec-sub']) setText('.produtos__sub', data['prod-sec-sub']);
-
   // Trust bar
   if (data['trust-label']) setText('.hero__trust > span', data['trust-label']);
   const trustSpans = document.querySelectorAll('.hero__trust-logos span');
@@ -436,25 +428,6 @@ async function applyAdminContent() {
     if (portfolioSection) portfolioSection.style.display = 'none';
   }
 
-  // Products
-  if (Array.isArray(data.produtos) && data.produtos.length) {
-    const grid = document.getElementById('produtos-grid');
-    if (grid) {
-      grid.innerHTML = data.produtos.map(p => `
-        <div class="prod-card">
-          ${p.badge ? `<div class="prod-card__badge">${p.badge}</div>` : ''}
-          ${p.icon  ? `<div class="prod-card__icon">${p.icon}</div>`  : ''}
-          <h3>${p.name}</h3>
-          ${p.desc  ? `<p>${p.desc}</p>` : ''}
-          ${p.price ? `<div class="prod-card__price">${p.price}</div>` : ''}
-          <a href="${p.link||'#'}" target="_blank" class="btn btn--primary btn--lg prod-card__btn">${p.btn||'Quero comprar'}</a>
-        </div>
-      `).join('');
-    }
-  } else {
-    const produtosSection = document.querySelector('.produtos');
-    if (produtosSection) produtosSection.style.display = 'none';
-  }
 }
 applyAdminContent();
 

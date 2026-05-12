@@ -48,10 +48,10 @@ const DEFAULTS = {
   ],
 
   solutions: [
-    { num: '01', icon: '📣', title: 'Assessoria de Marketing', desc: 'Estruturamos o marketing interno e a marca pessoal do empresário.', items: 'Posicionamento de marca\nGestão de redes sociais\nEstratégia de conteúdo\n+6 dígitos gerenciados em anúncios', highlight: '' },
-    { num: '02', icon: '🎯', title: 'Mentoria Comercial', desc: 'Montamos todos os processos comerciais do zero.', items: 'Pesquisa completa de ICP\nScript de Cold Call validado\nProcesso de apresentação\nGestão de equipe comercial\nEncontros 1x1', highlight: '60% de taxa de fechamento em reunião' },
-    { num: '03', icon: '🎬', title: 'Captação Audiovisual', desc: 'Produção de conteúdo estratégico que converte visualizações em clientes.', items: 'Vídeos institucionais e de vendas\nConteúdo para redes sociais\n+10 milhões de visualizações geradas', highlight: '' },
-    { num: '04', icon: '📚', title: 'Produtos Educacionais', desc: 'Cursos e playbooks da área comercial e de marketing.', items: 'Cursos práticos de vendas\nPlaybooks comerciais\nMateriais de marketing', highlight: '' },
+    { num: '01', icon: '✨', title: 'Identidade & Posicionamento Digital', desc: 'Construímos a presença digital que diferencia você do seu concorrente — do posicionamento estratégico ao visual e à voz que vendem.', items: 'Estratégia de posicionamento\nIdentidade visual para redes\nBio, feed e arquitetura de presença\nVoz, tom e narrativa da marca\nMarca pessoal do empresário', highlight: '' },
+    { num: '02', icon: '📣', title: 'Gestão de Conteúdo & Redes Sociais', desc: 'Planejamento editorial e execução diária. Sua marca falando todos os dias com intenção — não só postando por postar.', items: 'Calendário editorial estratégico\nCopy persuasiva por formato\nPostagem e agendamento diário\nRelacionamento e gestão de DMs\nAnálise de métricas e ajustes', highlight: '' },
+    { num: '03', icon: '🎬', title: 'Audiovisual & Roteiro', desc: 'Do roteiro ao corte final. Vídeos que prendem atenção e levam para a venda — Reels, anúncios, institucional e marca pessoal.', items: 'Roteiro estratégico por objetivo\nDireção e captação profissional\nEdição que segura a atenção\nReels, ads, institucional e VSLs\nConteúdo de marca pessoal', highlight: '+10M de visualizações geradas' },
+    { num: '04', icon: '📈', title: 'Tráfego Pago & Aquisição', desc: 'Campanhas que geram demanda previsível — não impressões, mas reuniões marcadas e vendas fechadas.', items: 'Estratégia de campanha (Meta + Google)\nFunil de aquisição estruturado\nCriativos validados em teste\nGestão diária e otimização\nRelatórios com CAC, ROAS e LTV', highlight: '+6 dígitos gerenciados em ads' },
   ],
 
   clients: [
@@ -70,7 +70,6 @@ const DEFAULTS = {
   ],
 
   videos: [],
-  produtos: [],
 
   'ct-title': 'Pronto para vender mais e melhor?',
   'ct-sub':   'Fale com nossa equipe e descubra como estruturar seu comercial de alta performance. Sem enrolação.',
@@ -110,11 +109,6 @@ const DEFAULTS = {
   'trust-3':     'Track & Field',
   'trust-4':     'Marlon Veículos',
   'trust-5':     'F4 Autocenter',
-
-  // Produtos section
-  'prod-sec-eyebrow': 'Produtos',
-  'prod-sec-h2':      'Invista no seu {crescimento}',
-  'prod-sec-sub':     'Cursos, mentorias e programas para estruturar e escalar seu comercial.',
 
   // FAQ
   'faq-eyebrow': 'Dúvidas frequentes',
@@ -224,7 +218,7 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
 const TAB_TITLES = {
   geral: 'Configurações Gerais', layout: 'Layout do Hero', hero: 'Textos do Hero',
   numeros: 'Números / Stats', solucoes: 'Soluções', clientes: 'Clientes / Resultados',
-  fundadores: 'Fundadores', videos: 'Portfólio de Vídeos', produtos: 'Produtos',
+  fundadores: 'Fundadores', videos: 'Portfólio de Vídeos',
   faq: 'FAQ', contato: 'Contato / Links', senha: 'Alterar Senha',
 };
 
@@ -294,11 +288,10 @@ function populateSimpleFields() {
     'pq-icon-1','pq-text-1','pq-icon-2','pq-text-2','pq-icon-3','pq-text-3',
     'pq-icon-4','pq-text-4','pq-icon-5','pq-text-5','pq-icon-6','pq-text-6',
     'pq-cta-text','pq-cta-btn',
-    // Section headers + trust bar + produtos header + FAQ header
+    // Section headers + trust bar + FAQ header
     'sol-eyebrow','sol-h2','res-eyebrow','res-h2',
     'fnd-eyebrow','fnd-h2','fnd-sub',
     'trust-label','trust-1','trust-2','trust-3','trust-4','trust-5',
-    'prod-sec-eyebrow','prod-sec-h2','prod-sec-sub',
     'faq-eyebrow','faq-h2','faq-sub',
   ].forEach(id => {
     const el = document.getElementById(id);
@@ -512,68 +505,6 @@ function collectVideos() {
       orient: orientEl?.value || 'horizontal',
     };
   }).filter(v => v.url);
-}
-
-// ─────────────────────────────────────────────
-// PRODUTO EDITORS
-// ─────────────────────────────────────────────
-function buildProdutoEditors() {
-  const list = document.getElementById('produtos-list');
-  if (!list) return;
-  const produtos = get('produtos') || [];
-  list.innerHTML = '';
-  produtos.forEach((p, i) => addProdutoRow(i, p));
-}
-
-function addProdutoRow(i, p = {}) {
-  const list = document.getElementById('produtos-list');
-  const div = document.createElement('div');
-  div.className = 'produto-editor';
-  div.dataset.prodIdx = i;
-  div.innerHTML = `
-    <div class="form-grid">
-      <div class="field"><label>Ícone (emoji)</label><input type="text" id="prod-icon-${i}" value="${p.icon||''}" placeholder="🎓" maxlength="4" /></div>
-      <div class="field"><label>Badge (ex: Mais vendido)</label><input type="text" id="prod-badge-${i}" value="${p.badge||''}" placeholder="Deixe vazio para ocultar" /></div>
-      <div class="field full"><label>Nome do produto</label><input type="text" id="prod-name-${i}" value="${p.name||''}" /></div>
-      <div class="field full"><label>Descrição</label><textarea id="prod-desc-${i}" rows="2">${p.desc||''}</textarea></div>
-      <div class="field"><label>Preço (ex: R$ 997)</label><input type="text" id="prod-price-${i}" value="${p.price||''}" /></div>
-      <div class="field"><label>Texto do botão</label><input type="text" id="prod-btn-${i}" value="${p.btn||'Quero comprar'}" /></div>
-      <div class="field full"><label>Link de compra</label><input type="text" id="prod-link-${i}" value="${p.link||''}" placeholder="https://..." /></div>
-    </div>
-    <button type="button" class="btn-remove-item" data-prod-remove="${i}">✕ Remover</button>
-    <hr style="border-color:var(--bd);margin:1rem 0" />
-  `;
-  list.appendChild(div);
-  div.querySelector('[data-prod-remove]').addEventListener('click', () => {
-    div.remove();
-    renumberProdutos();
-  });
-}
-
-function renumberProdutos() {
-  document.querySelectorAll('.produto-editor').forEach((div, i) => {
-    div.dataset.prodIdx = i;
-    div.querySelector('[data-prod-remove]').dataset.prodRemove = i;
-    ['icon','badge','name','desc','price','btn','link'].forEach(f => {
-      const el = div.querySelector(`[id^="prod-${f}-"]`);
-      if (el) el.id = `prod-${f}-${i}`;
-    });
-  });
-}
-
-function collectProdutos() {
-  return [...document.querySelectorAll('.produto-editor')].map(div => {
-    const i = div.dataset.prodIdx;
-    return {
-      icon:  document.getElementById(`prod-icon-${i}`)?.value  || '',
-      badge: document.getElementById(`prod-badge-${i}`)?.value || '',
-      name:  document.getElementById(`prod-name-${i}`)?.value  || '',
-      desc:  document.getElementById(`prod-desc-${i}`)?.value  || '',
-      price: document.getElementById(`prod-price-${i}`)?.value || '',
-      btn:   document.getElementById(`prod-btn-${i}`)?.value   || 'Quero comprar',
-      link:  document.getElementById(`prod-link-${i}`)?.value  || '',
-    };
-  }).filter(p => p.name);
 }
 
 // ─────────────────────────────────────────────
@@ -850,7 +781,6 @@ function collectAll() {
   d.clients   = collectClients();
   d.founders  = collectFounders();
   d.videos    = collectVideos();
-  d.produtos  = collectProdutos();
   // Layout
   ['l-headline','l-fontsize','l-align','l-bg','n-layout','s-style','c-fmt','f-style'].forEach(id => {
     const el = document.getElementById(id);
@@ -872,10 +802,9 @@ function collectAll() {
     const el = document.getElementById(id);
     if (el) d[id] = el.value;
   });
-  // Section headers + trust bar + produtos section + FAQ header
+  // Section headers + trust bar + FAQ header
   ['sol-eyebrow','sol-h2','res-eyebrow','res-h2','fnd-eyebrow','fnd-h2','fnd-sub',
    'trust-label','trust-1','trust-2','trust-3','trust-4','trust-5',
-   'prod-sec-eyebrow','prod-sec-h2','prod-sec-sub',
    'faq-eyebrow','faq-h2','faq-sub'].forEach(id => {
     const el = document.getElementById(id);
     if (el) d[id] = el.value;
@@ -979,17 +908,12 @@ async function initDashboard() {
   buildClientEditors();
   buildFounderEditors();
   buildVideoEditors();
-  buildProdutoEditors();
   buildFaqEditors();
 
-  // Wire add buttons for videos and products
+  // Wire add button for videos
   document.getElementById('addVideoBtn')?.addEventListener('click', () => {
     const count = document.querySelectorAll('.video-editor').length;
     addVideoRow(count);
-  });
-  document.getElementById('addProdutoBtn')?.addEventListener('click', () => {
-    const count = document.querySelectorAll('.produto-editor').length;
-    addProdutoRow(count);
   });
 
   // Wire preset buttons

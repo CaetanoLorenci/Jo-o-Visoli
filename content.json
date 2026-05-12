@@ -1,7 +1,7 @@
 {
   "g-company": "Grupo Amplia",
   "g-tagline": "Estruturação comercial de alta performance.",
-  "g-whatsapp": "5549999999999",
+  "g-whatsapp": "5549936181867",
   "g-instagram": "grupo.amplia",
   "h-eyebrow": "A nossa proposta de valor",
   "h-pillar1": "Para construir um negócio que venda todos os dias, de forma independente do dono.",
@@ -41,35 +41,35 @@
   "solutions": [
     {
       "num": "01",
-      "icon": "📣",
-      "title": "Assessoria de Marketing",
-      "desc": "Estruturamos o marketing interno e a marca pessoal do empresário.",
-      "items": "Posicionamento de marca\nGestão de redes sociais\nEstratégia de conteúdo\n+6 dígitos gerenciados em anúncios",
+      "icon": "✨",
+      "title": "Identidade & Posicionamento Digital",
+      "desc": "Construímos a presença digital que diferencia você do seu concorrente — do posicionamento estratégico ao visual e à voz que vendem.",
+      "items": "Estratégia de posicionamento\nIdentidade visual para redes\nBio, feed e arquitetura de presença\nVoz, tom e narrativa da marca\nMarca pessoal do empresário",
       "highlight": ""
     },
     {
       "num": "02",
-      "icon": "🎯",
-      "title": "Mentoria Comercial",
-      "desc": "Montamos todos os processos comerciais do zero.",
-      "items": "Pesquisa completa de ICP\nScript de Cold Call validado\nProcesso de apresentação\nGestão de equipe comercial\nEncontros 1x1",
-      "highlight": "60% de taxa de fechamento em reunião"
+      "icon": "📣",
+      "title": "Gestão de Conteúdo & Redes Sociais",
+      "desc": "Planejamento editorial e execução diária. Sua marca falando todos os dias com intenção — não só postando por postar.",
+      "items": "Calendário editorial estratégico\nCopy persuasiva por formato\nPostagem e agendamento diário\nRelacionamento e gestão de DMs\nAnálise de métricas e ajustes",
+      "highlight": ""
     },
     {
       "num": "03",
       "icon": "🎬",
-      "title": "Captação Audiovisual",
-      "desc": "Produção de conteúdo estratégico que converte visualizações em clientes.",
-      "items": "Vídeos institucionais e de vendas\nConteúdo para redes sociais\n+10 milhões de visualizações geradas",
-      "highlight": ""
+      "title": "Audiovisual & Roteiro",
+      "desc": "Do roteiro ao corte final. Vídeos que prendem atenção e levam para a venda — Reels, anúncios, institucional e marca pessoal.",
+      "items": "Roteiro estratégico por objetivo\nDireção e captação profissional\nEdição que segura a atenção\nReels, ads, institucional e VSLs\nConteúdo de marca pessoal",
+      "highlight": "+10M de visualizações geradas"
     },
     {
       "num": "04",
-      "icon": "📚",
-      "title": "Produtos Educacionais",
-      "desc": "Cursos e playbooks da área comercial e de marketing.",
-      "items": "Cursos práticos de vendas\nPlaybooks comerciais\nMateriais de marketing",
-      "highlight": ""
+      "icon": "📈",
+      "title": "Tráfego Pago & Aquisição",
+      "desc": "Campanhas que geram demanda previsível — não impressões, mas reuniões marcadas e vendas fechadas.",
+      "items": "Estratégia de campanha (Meta + Google)\nFunil de aquisição estruturado\nCriativos validados em teste\nGestão diária e otimização\nRelatórios com CAC, ROAS e LTV",
+      "highlight": "+6 dígitos gerenciados em ads"
     }
   ],
   "clients": [
@@ -141,7 +141,6 @@
     }
   ],
   "videos": [],
-  "produtos": [],
   "l-headline": "{VENDA} MAIS e {MELHOR}\natravés da\n{ESTRUTURAÇÃO COMERCIAL}\nde alta {performance!}",
   "l-fontsize": "xlarge",
   "l-align": "center",
@@ -198,9 +197,6 @@
   "trust-3": "Track & Field",
   "trust-4": "Marlon Veículos",
   "trust-5": "F4 Autocenter",
-  "prod-sec-eyebrow": "Produtos",
-  "prod-sec-h2": "Invista no seu {crescimento}",
-  "prod-sec-sub": "Cursos, mentorias e programas para estruturar e escalar seu comercial.",
   "faq-eyebrow": "Dúvidas frequentes",
   "faq-h2": "Perguntas {frequentes}",
   "faq-sub": "Ainda com dúvidas? Fale diretamente com a nossa equipe no WhatsApp.",
@@ -226,5 +222,5 @@
       "a": "É simples: clique no botão \"Falar com a equipe\", entre em contato via WhatsApp ou Instagram, e nossa equipe vai apresentar as soluções mais adequadas para o seu negócio."
     }
   ],
-  "_revision": 1778615089421
+  "_revision": 1778615912574
 }

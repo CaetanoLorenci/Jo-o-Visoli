@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin – Grupo Amplia</title>
   <meta name="robots" content="noindex, nofollow" />
-  <link rel="stylesheet" href="admin.css?v=3" />
+  <link rel="stylesheet" href="admin.css?v=4" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800&family=Inter:wght@400;500;600&family=Audiowide&display=swap" rel="stylesheet" />
@@ -84,10 +84,6 @@
         <button class="sidebar__item" data-tab="videos">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
           Portfólio de Vídeos
-        </button>
-        <button class="sidebar__item" data-tab="produtos">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          Produtos
         </button>
         <button class="sidebar__item" data-tab="faq">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
@@ -376,7 +372,7 @@ de alta {performance!}</textarea>
           <div class="tab-controls">
             <div class="section-header">
               <h2>Soluções</h2>
-              <p>Os 4 produtos/serviços do Grupo Amplia.</p>
+              <p>Os 4 serviços do Grupo Amplia.</p>
             </div>
             <div class="form-grid" style="margin-bottom:1.5rem">
               <div class="field"><label>Eyebrow da seção</label><input type="text" id="sol-eyebrow" /></div>
@@ -482,25 +478,6 @@ de alta {performance!}</textarea>
           </div>
           <div id="videos-list"></div>
           <button type="button" class="btn-add" id="addVideoBtn">+ Adicionar vídeo</button>
-        </div>
-      </section>
-
-      <!-- ═══ TAB: PRODUTOS ═══ -->
-      <section class="tab-panel" id="tab-produtos">
-        <div class="tab-controls" style="max-width:800px">
-          <div class="section-header">
-            <h2>Produtos</h2>
-            <p>Adicione cursos, mentorias ou qualquer produto para venda.</p>
-          </div>
-          <div class="section-header" style="margin-bottom:.5rem"><h3 style="font-size:.85rem;color:var(--wh2)">Cabeçalho da seção</h3></div>
-          <div class="form-grid" style="margin-bottom:1.5rem">
-            <div class="field"><label>Eyebrow</label><input type="text" id="prod-sec-eyebrow" /></div>
-            <div class="field full"><label>Título</label><input type="text" id="prod-sec-h2" /><span class="field-hint">Use {texto} para laranja</span></div>
-            <div class="field full"><label>Subtítulo</label><input type="text" id="prod-sec-sub" /></div>
-          </div>
-          <hr style="border-color:var(--bd);margin:0 0 1.5rem" />
-          <div id="produtos-list"></div>
-          <button type="button" class="btn-add" id="addProdutoBtn">+ Adicionar produto</button>
         </div>
       </section>
 
@@ -696,6 +673,6 @@ de alta {performance!}</textarea>
     </main>
   </div>
 
-  <script src="admin.js?v=3"></script>
+  <script src="admin.js?v=4"></script>
 </body>
 </html>

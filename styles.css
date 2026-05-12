@@ -414,16 +414,3 @@ cite { color: var(--or); font-style: normal; font-size: .85rem; font-weight: 700
 .vid-card__info { padding: 1rem 1.25rem 1.25rem; }
 .vid-card__info h3 { font-size: .95rem; font-weight: 700; margin-bottom: .4rem; }
 .vid-card__info p { font-size: .82rem; color: var(--wh3); margin: 0; }
-
-/* ── PRODUTOS ──────────────────────────────── */
-.produtos { padding: 6rem 0; background: #050505; }
-.produtos__sub { color: var(--wh3); font-size: .95rem; margin-top: .75rem; margin-bottom: 0; }
-.produtos__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 340px)); gap: 1.5rem; margin-top: 3rem; justify-content: center; }
-.prod-card { background: #0d0d0d; border: 1px solid var(--bd); border-radius: 14px; padding: 1.75rem; display: flex; flex-direction: column; gap: .75rem; position: relative; transition: border-color .2s, transform .2s; }
-.prod-card:hover { border-color: var(--or); transform: translateY(-3px); }
-.prod-card__badge { position: absolute; top: -12px; left: 1.5rem; background: var(--or); color: #fff; font-size: .7rem; font-weight: 700; font-family: var(--ff-head); padding: .25rem .7rem; border-radius: 20px; text-transform: uppercase; letter-spacing: .05em; }
-.prod-card__icon { font-size: 2rem; }
-.prod-card h3 { font-size: 1.1rem; font-weight: 800; font-family: var(--ff-head); }
-.prod-card p { font-size: .85rem; color: var(--wh3); flex: 1; margin: 0; }
-.prod-card__price { font-size: 1.5rem; font-weight: 900; font-family: var(--ff-head); color: var(--or); }
-.prod-card__btn { margin-top: auto; padding-top: 1rem; text-align: center; display: block; }
