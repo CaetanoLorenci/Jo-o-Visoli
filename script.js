@@ -340,7 +340,7 @@ async function applyAdminContent() {
   if (data['sb-eyebrow']) setText('.sobre .eyebrow', data['sb-eyebrow']);
   if (data['sb-h2']) {
     const el = document.querySelector('.sobre h2');
-    if (el) el.innerHTML = data['sb-h2'];
+    if (el) el.innerHTML = data['sb-h2'].replace(/\{([^}]*)\}/g, '<span class="or">$1</span>');
   }
   if (data['sb-quote']) setText('.sobre__quote p', data['sb-quote']);
   if (data['sb-cite'])  setText('.sobre__quote cite', data['sb-cite']);
@@ -439,22 +439,48 @@ async function applyAdminContent() {
 }
 applyAdminContent();
 
-// ── DRIVE VIDEO: click-to-load ──────────────
-// Mounts the Drive iframe only after the user clicks the poster — keeps the
-// initial page light and dodges Drive's heavy native player on mobile.
+// ── DRIVE VIDEO: lightbox ───────────────────
+// Click on a poster opens the Drive iframe inside a near-fullscreen overlay.
+// At that size the iOS-injected video chrome (giant play button, 10s skip,
+// chunky scrubber) renders at sensible proportions instead of swallowing the
+// inline card. Closing the overlay clears the iframe so playback stops.
+function openVideoLightbox(driveId, title) {
+  let overlay = document.getElementById('vidLightbox');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'lightbox';
+    overlay.id = 'vidLightbox';
+    overlay.hidden = true;
+    overlay.innerHTML =
+      '<button type="button" class="lightbox__close" aria-label="Fechar vídeo">✕</button>' +
+      '<div class="lightbox__inner"></div>';
+    document.body.appendChild(overlay);
+    overlay.querySelector('.lightbox__close').addEventListener('click', closeVideoLightbox);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeVideoLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && !overlay.hidden) closeVideoLightbox(); });
+  }
+  const inner = overlay.querySelector('.lightbox__inner');
+  const safeTitle = (title || '').replace(/"/g, '&quot;');
+  inner.innerHTML =
+    `<iframe src="https://drive.google.com/file/d/${driveId}/preview" allowfullscreen allow="autoplay" title="${safeTitle}"></iframe>`;
+  overlay.hidden = false;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeVideoLightbox() {
+  const overlay = document.getElementById('vidLightbox');
+  if (!overlay) return;
+  overlay.querySelector('.lightbox__inner').innerHTML = '';
+  overlay.hidden = true;
+  document.body.style.overflow = '';
+}
+
 document.addEventListener('click', (e) => {
   const poster = e.target.closest('.vid-poster');
   if (!poster) return;
   const driveId = poster.dataset.driveId;
   if (!driveId) return;
-  const iframe = document.createElement('iframe');
-  iframe.src = `https://drive.google.com/file/d/${driveId}/preview`;
-  iframe.setAttribute('frameborder', '0');
-  iframe.setAttribute('allowfullscreen', '');
-  iframe.setAttribute('allow', 'autoplay');
-  iframe.setAttribute('loading', 'lazy');
-  iframe.setAttribute('title', poster.dataset.title || '');
-  poster.replaceWith(iframe);
+  openVideoLightbox(driveId, poster.dataset.title || '');
 });
 
 // ── NAV: scroll effect ──────────────────────
