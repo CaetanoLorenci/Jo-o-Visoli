@@ -197,12 +197,12 @@ async function applyAdminContent() {
   };
 
   function parseMarkup(raw, isItalic) {
-    const lines = raw.split('\n');
+    const withSpans = raw.replace(/\{([^}]*)\}/g, '<span class="or">$1</span>');
+    const lines = withSpans.split('\n');
     const lastIdx = lines.length - 1;
     return lines.map((line, i) => {
-      const parsed = line.replace(/\{([^}]*)\}/g, '<span class="or">$1</span>');
       const isLast = i === lastIdx;
-      const wrapped = isLast && isItalic ? `<em>${parsed}</em>` : parsed;
+      const wrapped = isLast && isItalic ? `<em>${line}</em>` : line;
       return i < lastIdx ? wrapped + '<br/>' : wrapped;
     }).join('');
   }

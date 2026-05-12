@@ -80,7 +80,7 @@ const DEFAULTS = {
   'ct-igbtn': 'Ver no Instagram',
 
   // Layout
-  'l-headline':       '{VENDA} MAIS e {MELHOR}\natravés da\n{ESTRUTURAÇÃO\nCOMERCIAL}\nde alta {performance!}',
+  'l-headline':       '{VENDA} MAIS e {MELHOR}\natravés da\n{ESTRUTURAÇÃO COMERCIAL}\nde alta {performance!}',
   'l-fontsize':       'xlarge',
   'l-align':          'center',
   'l-italic':         true,
@@ -236,12 +236,13 @@ function showToast(msg = '✓ Alterações salvas com sucesso!') {
 
 // ── MARKUP PARSER ─────────────────────────────────────────────
 function parseMarkup(raw, isItalic) {
-  const lines = raw.split('\n');
+  const withSpans = raw.replace(/\{([^}]*)\}/g, '<span class="or">$1</span>');
+  const lines = withSpans.split('\n');
+  const lastIdx = lines.length - 1;
   return lines.map((line, i) => {
-    const parsed  = line.replace(/\{([^}]*)\}/g, '<span class="or">$1</span>');
-    const isLast  = i === lines.length - 1;
-    const wrapped = isLast && isItalic ? `<em>${parsed}</em>` : parsed;
-    return i < lines.length - 1 ? wrapped + '<br/>' : wrapped;
+    const isLast  = i === lastIdx;
+    const wrapped = isLast && isItalic ? `<em>${line}</em>` : line;
+    return i < lastIdx ? wrapped + '<br/>' : wrapped;
   }).join('');
 }
 
