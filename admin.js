@@ -137,7 +137,7 @@ const PWD_KEY      = 'amplia_pwd_hash';
 const SESSION_KEY  = 'amplia_auth';
 const TOKEN_KEY    = 'amplia_github_token';
 const DEFAULT_PWD  = 'Amplia2026';
-const GITHUB_OWNER = 'joaovisoli617-ops';
+const GITHUB_OWNER = 'CaetanoLorenci';
 const GITHUB_REPO  = 'Jo-o-Visoli';
 const GITHUB_FILE  = 'content.json';
 
