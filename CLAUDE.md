@@ -10,10 +10,10 @@ O repositório está sendo migrado da conta de João Visoli para a conta pessoal
 
 ### Status da migração
 - [x] `admin.js` já atualizado com `GITHUB_OWNER = 'CaetanoLorenci'`
-- [ ] Repositório transferido no GitHub para `CaetanoLorenci/Jo-o-Visoli`
-- [ ] GitHub Pages ativado no novo repositório
-- [ ] Novo PAT gerado pela conta `CaetanoLorenci`
-- [ ] Novo PAT salvo no painel admin (aba "Senha" → campo "GitHub Token")
+- [x] Repositório transferido para `CaetanoLorenci/Jo-o-Visoli`
+- [x] GitHub Pages ativo em `caetanolorenci.github.io/Jo-o-Visoli/`
+- [x] Novo PAT gerado pela conta `CaetanoLorenci`
+- [x] Novo PAT salvo no painel admin
 
 ### Passos para completar a migração (fazer uma única vez)
 
