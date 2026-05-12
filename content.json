@@ -1,1 +1,204 @@
-{}
+{
+  "g-company": "Grupo Amplia",
+  "g-tagline": "Estruturação comercial de alta performance.",
+  "g-whatsapp": "5549999999999",
+  "g-instagram": "grupo.amplia",
+  "h-eyebrow": "A nossa proposta de valor",
+  "h-pillar1": "Para construir um negócio que venda todos os dias, de forma independente do dono.",
+  "h-pillar2": "Através de uma metodologia que nós vivenciamos diariamente no Grupo Amplia.",
+  "h-cta": "Quero estruturar meu comercial",
+  "ct-title": "Pronto para vender mais e melhor?",
+  "ct-sub": "Fale com nossa equipe e descubra como estruturar seu comercial de alta performance. Sem enrolação.",
+  "ct-wabtn": "Falar no WhatsApp",
+  "ct-igbtn": "Ver no Instagram",
+  "g-logo-size": 36,
+  "stats": [
+    {
+      "prefix": "R$",
+      "value": "500",
+      "suffix": "mil+",
+      "label": "em faturamento gerado para clientes"
+    },
+    {
+      "prefix": "",
+      "value": "14",
+      "suffix": " meses",
+      "label": "de mercado com resultados comprovados"
+    },
+    {
+      "prefix": "",
+      "value": "60",
+      "suffix": "%",
+      "label": "de taxa de fechamento em reuniões de vendas"
+    },
+    {
+      "prefix": "",
+      "value": "8",
+      "suffix": "+ clientes",
+      "label": "de grande porte atendidos"
+    }
+  ],
+  "solutions": [
+    {
+      "num": "01",
+      "icon": "📣",
+      "title": "Assessoria de Marketing",
+      "desc": "Estruturamos o marketing interno e a marca pessoal do empresário.",
+      "items": "Posicionamento de marca\nGestão de redes sociais\nEstratégia de conteúdo\n+6 dígitos gerenciados em anúncios",
+      "highlight": ""
+    },
+    {
+      "num": "02",
+      "icon": "🎯",
+      "title": "Mentoria Comercial",
+      "desc": "Montamos todos os processos comerciais do zero.",
+      "items": "Pesquisa completa de ICP\nScript de Cold Call validado\nProcesso de apresentação\nGestão de equipe comercial\nEncontros 1x1",
+      "highlight": "60% de taxa de fechamento em reunião"
+    },
+    {
+      "num": "03",
+      "icon": "🎬",
+      "title": "Captação Audiovisual",
+      "desc": "Produção de conteúdo estratégico que converte visualizações em clientes.",
+      "items": "Vídeos institucionais e de vendas\nConteúdo para redes sociais\n+10 milhões de visualizações geradas",
+      "highlight": ""
+    },
+    {
+      "num": "04",
+      "icon": "📚",
+      "title": "Produtos Educacionais",
+      "desc": "Cursos e playbooks da área comercial e de marketing.",
+      "items": "Cursos práticos de vendas\nPlaybooks comerciais\nMateriais de marketing",
+      "highlight": ""
+    }
+  ],
+  "clients": [
+    {
+      "tag": "Automotivo",
+      "name": "Marlon Veículos",
+      "value": "+R$350K",
+      "period": "bruto no 1º mês",
+      "desc": "Mais de R$350 mil em venda de veículos no primeiro mês."
+    },
+    {
+      "tag": "Automotivo",
+      "name": "Chama Autocar",
+      "value": "+R$100K",
+      "period": "bruto no 1º mês",
+      "desc": "Mais de R$100 mil em vendas no primeiro mês de assessoria."
+    },
+    {
+      "tag": "Moda",
+      "name": "Colcci",
+      "value": "R$60K",
+      "period": "em vendas geradas",
+      "desc": "Resultados expressivos para uma das maiores marcas de moda do Brasil."
+    },
+    {
+      "tag": "Moda esportiva",
+      "name": "Track & Field",
+      "value": "R$30K",
+      "period": "em vendas geradas",
+      "desc": "Estratégias comerciais que impulsionaram as vendas de forma consistente."
+    },
+    {
+      "tag": "Moda premium",
+      "name": "Tommy Hilfiger",
+      "value": "✓",
+      "period": "parceria ativa",
+      "desc": "Marca reconhecida mundialmente confiou no Grupo Amplia."
+    },
+    {
+      "tag": "Serviços",
+      "name": "F4 Autocenter",
+      "value": "✓",
+      "period": "parceria ativa",
+      "desc": "Um dos maiores autocenters do Oeste de SC."
+    },
+    {
+      "tag": "Gastronomia",
+      "name": "Alecrim",
+      "value": "✓",
+      "period": "parceria ativa",
+      "desc": "Um dos maiores empórios e cafeterias da região."
+    },
+    {
+      "tag": "Mentor",
+      "name": "Ascendy – Ale Ferreira",
+      "value": "+180K",
+      "period": "seguidores | R$200K aos 18 anos",
+      "desc": "Mentor que ajudou a estruturar a empresa."
+    }
+  ],
+  "founders": [
+    {
+      "initials": "",
+      "name": "",
+      "role": "",
+      "statNum": "",
+      "statLabel": "",
+      "bio": ""
+    },
+    {
+      "initials": "CL",
+      "name": "Caetano Lorenci",
+      "role": "Expert em Marketing e Gestão de Dados",
+      "statNum": "+6 dígitos",
+      "statLabel": "gerenciados em anúncios",
+      "bio": "Especialista em transformar dados em estratégias de marketing que geram receita."
+    },
+    {
+      "initials": "",
+      "name": "",
+      "role": "",
+      "statNum": "",
+      "statLabel": "",
+      "bio": ""
+    }
+  ],
+  "videos": [],
+  "produtos": [],
+  "l-headline": "{VENDA} MAIS e {MELHOR}\natravés da\n{ESTRUTURAÇÃO}\n{COMERCIAL}\nde alta {performance!}",
+  "l-fontsize": "xlarge",
+  "l-align": "center",
+  "l-bg": "black",
+  "n-layout": "row",
+  "s-style": "bordered",
+  "c-fmt": "grid",
+  "f-style": "centered",
+  "l-italic": true,
+  "l-mark-bg": true,
+  "l-show-eyebrow": true,
+  "l-show-pillars": true,
+  "l-show-trust": true,
+  "l-show-ghost-btn": true,
+  "l-wide-spacing": false,
+  "sb-eyebrow": "Quem somos",
+  "sb-h2": "Somos uma {Estruturadora Comercial}",
+  "sb-quote": "Construímos um negócio que vende todos os dias, de forma independente do dono — e ensinamos nossos clientes a fazer o mesmo.",
+  "sb-cite": "— Grupo Amplia",
+  "sb-p1": "O foco aqui é aumentar a sua precificação e estruturar o seu comercial. Somos uma empresa jovem com 14 meses de mercado e resultados que falam por si: mais de meio milhão de reais gerados para empresários brasileiros em setores do varejo, automotivo e serviços.",
+  "sb-p2": "Antes de levar a metodologia para os nossos clientes, nós a aplicamos em nós mesmos — e dobramos o nosso próprio faturamento, saindo de R$13K para R$25K ao mês no início de 2024.",
+  "sb-b1": "Metodologia vivenciada internamente",
+  "sb-b2": "Resultados mensuráveis desde o 1º mês",
+  "sb-b3": "Processos completos: captação ao fechamento",
+  "sb-badge-from": "R$13K",
+  "sb-badge-to": "R$25K",
+  "sb-badge-label": "nosso próprio faturamento dobrado",
+  "pq-eyebrow": "Para quem é",
+  "pq-title": "Você se identifica com alguma dessas situações?",
+  "pq-cta-text": "Se você se identificou com pelo menos uma dessas situações, o Grupo Amplia é para você.",
+  "pq-cta-btn": "Quero resolver isso agora",
+  "pq-icon-1": "😤",
+  "pq-text-1": "Você é o único que sabe vender na empresa e se sente refém do seu próprio negócio",
+  "pq-icon-2": "📉",
+  "pq-text-2": "Suas vendas são inconsistentes — mês bom, mês ruim, sem previsibilidade",
+  "pq-icon-3": "🤝",
+  "pq-text-3": "Você não sabe como contratar, treinar e gerir um time comercial",
+  "pq-icon-4": "💸",
+  "pq-text-4": "Você cobra barato, tem dificuldade em aumentar sua precificação sem perder clientes",
+  "pq-icon-5": "📣",
+  "pq-text-5": "Seu marketing não gera leads qualificados para o seu time de vendas fechar",
+  "pq-icon-6": "🎯",
+  "pq-text-6": "Você quer escalar, mas não tem processos comerciais estruturados"
+}
