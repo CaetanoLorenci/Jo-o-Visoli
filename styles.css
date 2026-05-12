@@ -391,15 +391,26 @@ cite { color: var(--or); font-style: normal; font-size: .85rem; font-weight: 700
   .footer__top { flex-direction: column; align-items: flex-start; }
   .footer__nav { gap: 1rem; }
   .br-md { display: inline; }
+  /* Centered, capped CTA buttons across tablet + phone */
+  .hero__ctas .btn,
+  .cta-final__actions .btn {
+    display: flex;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  /* Bigger WhatsApp floater on touch — primary conversion path for FB ads */
+  .wa-float { width: 68px; height: 68px; bottom: 1.25rem; right: 1.25rem; }
+  .wa-float svg { width: 32px; height: 32px; }
 }
 @media (max-width: 480px) {
   .numeros__grid { grid-template-columns: 1fr; }
   .hero__trust-logos { gap: .4rem; }
   /* Stop long button labels from blowing past the container on phones */
   .btn { white-space: normal; line-height: 1.2; }
-  .btn--lg { padding: .95rem 1.4rem; font-size: .85rem; }
-  .hero__ctas .btn,
-  .cta-final__actions .btn { width: 100%; max-width: 320px; text-align: center; }
+  .btn--lg { padding: .95rem 1.3rem; font-size: .82rem; }
 }
 
 /* ── PORTFOLIO ─────────────────────────────── */
