@@ -1,6 +1,6 @@
 /* ============================================================
    GRUPO AMPLIA — ADMIN PANEL SCRIPT v3
-   Senha padrão: Amplia@2024
+   Senha padrão: Amplia2026
    ============================================================ */
 
 // ── DEFAULTS ────────────────────────────────────────────────
@@ -80,7 +80,7 @@ const DEFAULTS = {
   'ct-igbtn': 'Ver no Instagram',
 
   // Layout
-  'l-headline':       '{VENDA} MAIS e {MELHOR}\natravés da\n{ESTRUTURAÇÃO\nCOMERCIAL}\nde alta {performance!}',
+  'l-headline':       '{VENDA} MAIS e {MELHOR}\natravés da\n{ESTRUTURAÇÃO COMERCIAL}\nde alta {performance!}',
   'l-fontsize':       'xlarge',
   'l-align':          'center',
   'l-italic':         true,
@@ -95,6 +95,40 @@ const DEFAULTS = {
   's-style':          'bordered',
   'c-fmt':            'grid',
   'f-style':          'centered',
+
+  // Section headers
+  'sol-eyebrow': 'O que oferecemos',
+  'sol-h2':      'Nossas {4 Soluções}',
+  'res-eyebrow': 'Prova social',
+  'res-h2':      'Empresas que {confiam} no Grupo Amplia',
+  'fnd-eyebrow': 'Nossa equipe',
+  'fnd-h2':      'FUNDADORES',
+  'fnd-sub':     'Somos uma estruturadora comercial. O foco é aumentar a sua precificação e estruturar o seu comercial.',
+
+  // Hero trust bar
+  'trust-label': 'Empresas que confiam em nós:',
+  'trust-1':     'Colcci',
+  'trust-2':     'Tommy Hilfiger',
+  'trust-3':     'Track & Field',
+  'trust-4':     'Marlon Veículos',
+  'trust-5':     'F4 Autocenter',
+
+  // Produtos section
+  'prod-sec-eyebrow': 'Produtos',
+  'prod-sec-h2':      'Invista no seu {crescimento}',
+  'prod-sec-sub':     'Cursos, mentorias e programas para estruturar e escalar seu comercial.',
+
+  // FAQ
+  'faq-eyebrow': 'Dúvidas frequentes',
+  'faq-h2':      'Perguntas {frequentes}',
+  'faq-sub':     'Ainda com dúvidas? Fale diretamente com a nossa equipe no WhatsApp.',
+  faq: [
+    { q: 'Para qual tipo de empresa o Grupo Amplia atende?', a: 'Atendemos empresários de qualquer segmento que queiram estruturar seu comercial e escalar as vendas. Já atendemos moda (Colcci, Tommy Hilfiger, Track & Field), automotivo (Marlon Veículos, Chama Autocar, F4 Autocenter), gastronomia (Alecrim) e outros.' },
+    { q: 'Qual é o prazo para ver resultados?', a: 'Nossos clientes do setor automotivo já geramos resultados no 1º mês (R$350K para Marlon Veículos e R$100K para Chama Autocar). O prazo varia de acordo com o segmento e o ponto de partida do seu comercial, mas trabalhamos para gerar resultado o mais rápido possível.' },
+    { q: 'Como funciona a Mentoria Comercial?', a: 'Montamos todos os seus processos comerciais do zero: pesquisa de ICP, script de cold call, processo de apresentação para gerar valor antes do preço, gestão de equipe e encontros 1x1 para estruturar e tirar dúvidas. Nossa taxa de fechamento em reuniões é de 60%.' },
+    { q: 'Vocês trabalham com empresas de fora do Brasil?', a: 'Atualmente, nossa atuação é focada em empresas brasileiras. Se você tiver interesse em uma parceria internacional, entre em contato para conversarmos sobre viabilidade.' },
+    { q: 'Como começar a trabalhar com o Grupo Amplia?', a: 'É simples: clique no botão "Falar com a equipe", entre em contato via WhatsApp ou Instagram, e nossa equipe vai apresentar as soluções mais adequadas para o seu negócio.' },
+  ],
 };
 
 // ── STORAGE / AUTH ───────────────────────────────────────────
@@ -102,7 +136,7 @@ const STORAGE_KEY  = 'amplia_content';
 const PWD_KEY      = 'amplia_pwd_hash';
 const SESSION_KEY  = 'amplia_auth';
 const TOKEN_KEY    = 'amplia_github_token';
-const DEFAULT_PWD  = 'Amplia@2024';
+const DEFAULT_PWD  = 'Amplia2026';
 const GITHUB_OWNER = 'joaovisoli617-ops';
 const GITHUB_REPO  = 'Jo-o-Visoli';
 const GITHUB_FILE  = 'content.json';
@@ -120,6 +154,12 @@ async function checkPassword(input) {
 async function setPassword(newPwd) {
   localStorage.setItem(PWD_KEY, await sha256(newPwd));
 }
+
+// Clear stored hash if it still matches old default so new default takes effect
+(async () => {
+  const stored = localStorage.getItem(PWD_KEY);
+  if (stored && stored === await sha256('Amplia@2024')) localStorage.removeItem(PWD_KEY);
+})();
 
 function loadData()     { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch { return {}; } }
 function saveData(data) { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
@@ -165,7 +205,7 @@ const TAB_TITLES = {
   geral: 'Configurações Gerais', layout: 'Layout do Hero', hero: 'Textos do Hero',
   numeros: 'Números / Stats', solucoes: 'Soluções', clientes: 'Clientes / Resultados',
   fundadores: 'Fundadores', videos: 'Portfólio de Vídeos', produtos: 'Produtos',
-  contato: 'Contato / Links', senha: 'Alterar Senha',
+  faq: 'FAQ', contato: 'Contato / Links', senha: 'Alterar Senha',
 };
 
 function switchTab(tab) {
@@ -196,12 +236,13 @@ function showToast(msg = '✓ Alterações salvas com sucesso!') {
 
 // ── MARKUP PARSER ─────────────────────────────────────────────
 function parseMarkup(raw, isItalic) {
-  const lines = raw.split('\n');
+  const withSpans = raw.replace(/\{([^}]*)\}/g, '<span class="or">$1</span>');
+  const lines = withSpans.split('\n');
+  const lastIdx = lines.length - 1;
   return lines.map((line, i) => {
-    const parsed  = line.replace(/\{([^}]*)\}/g, '<span class="or">$1</span>');
-    const isLast  = i === lines.length - 1;
-    const wrapped = isLast && isItalic ? `<em>${parsed}</em>` : parsed;
-    return i < lines.length - 1 ? wrapped + '<br/>' : wrapped;
+    const isLast  = i === lastIdx;
+    const wrapped = isLast && isItalic ? `<em>${line}</em>` : line;
+    return i < lastIdx ? wrapped + '<br/>' : wrapped;
   }).join('');
 }
 
@@ -233,6 +274,12 @@ function populateSimpleFields() {
     'pq-icon-1','pq-text-1','pq-icon-2','pq-text-2','pq-icon-3','pq-text-3',
     'pq-icon-4','pq-text-4','pq-icon-5','pq-text-5','pq-icon-6','pq-text-6',
     'pq-cta-text','pq-cta-btn',
+    // Section headers + trust bar + produtos header + FAQ header
+    'sol-eyebrow','sol-h2','res-eyebrow','res-h2',
+    'fnd-eyebrow','fnd-h2','fnd-sub',
+    'trust-label','trust-1','trust-2','trust-3','trust-4','trust-5',
+    'prod-sec-eyebrow','prod-sec-h2','prod-sec-sub',
+    'faq-eyebrow','faq-h2','faq-sub',
   ].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.value = get(id);
@@ -353,6 +400,26 @@ function buildFounderEditors() {
       <div class="field"><label>Número destaque</label><input type="text" id="fn-snum-${i}" value="${f.statNum}" /></div>
       <div class="field"><label>Label do número</label><input type="text" id="fn-slbl-${i}" value="${f.statLabel}" /></div>
       <div class="field full"><label>Bio</label><textarea rows="2" id="fn-bio-${i}">${f.bio}</textarea></div>`));
+  });
+}
+
+function buildFaqEditors() {
+  const c = document.getElementById('faq-editors');
+  if (!c) return;
+  c.innerHTML = '';
+  get('faq').forEach((f, i) => {
+    const el = document.createElement('div');
+    el.className = 'stat-card';
+    el.innerHTML = `<h3>Pergunta ${i + 1}</h3>
+      <div class="form-grid">
+        <div class="field full"><label>Pergunta</label><input type="text" id="faq-q-${i}" /></div>
+        <div class="field full"><label>Resposta</label><textarea rows="3" id="faq-a-${i}"></textarea></div>
+      </div>`;
+    c.appendChild(el);
+    const qEl = el.querySelector(`#faq-q-${i}`);
+    const aEl = el.querySelector(`#faq-a-${i}`);
+    if (qEl) qEl.value = f.q;
+    if (aEl) aEl.value = f.a;
   });
 }
 
@@ -622,6 +689,22 @@ function updatePreviewFundadores() {
   }).join('');
 }
 
+function updatePreviewFaq() {
+  const el = id => document.getElementById(id);
+  const g  = id => document.getElementById(id)?.value || DEFAULTS[id] || '';
+  if (el('pv-faq-eyebrow')) el('pv-faq-eyebrow').textContent = g('faq-eyebrow').toUpperCase();
+  if (el('pv-faq-title')) {
+    el('pv-faq-title').innerHTML = g('faq-h2').replace(/\{([^}]*)\}/g, '<span style="color:#fc4900">$1</span>');
+  }
+  const list = el('pv-faq-list');
+  if (list) {
+    list.innerHTML = DEFAULTS.faq.map((_, i) => {
+      const q = document.getElementById(`faq-q-${i}`)?.value || DEFAULTS.faq[i]?.q || '';
+      return `<div class="pv-faq-item"><span>+</span>&nbsp;<span>${q}</span></div>`;
+    }).join('');
+  }
+}
+
 function updatePreviewContato() {
   const title = document.getElementById('ct-title')?.value || DEFAULTS['ct-title'];
   const sub   = document.getElementById('ct-sub')?.value   || DEFAULTS['ct-sub'];
@@ -669,6 +752,7 @@ function updateAllPreviews() {
   updatePreviewSolucoes();
   updatePreviewClientes();
   updatePreviewFundadores();
+  updatePreviewFaq();
   updatePreviewContato();
 }
 
@@ -765,6 +849,19 @@ function collectAll() {
     const el = document.getElementById(id);
     if (el) d[id] = el.value;
   });
+  // Section headers + trust bar + produtos section + FAQ header
+  ['sol-eyebrow','sol-h2','res-eyebrow','res-h2','fnd-eyebrow','fnd-h2','fnd-sub',
+   'trust-label','trust-1','trust-2','trust-3','trust-4','trust-5',
+   'prod-sec-eyebrow','prod-sec-h2','prod-sec-sub',
+   'faq-eyebrow','faq-h2','faq-sub'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) d[id] = el.value;
+  });
+  // FAQ items
+  d.faq = DEFAULTS.faq.map((_, i) => ({
+    q: document.getElementById(`faq-q-${i}`)?.value ?? '',
+    a: document.getElementById(`faq-a-${i}`)?.value ?? '',
+  }));
   return d;
 }
 
@@ -849,6 +946,7 @@ function initDashboard() {
   buildFounderEditors();
   buildVideoEditors();
   buildProdutoEditors();
+  buildFaqEditors();
 
   // Wire add buttons for videos and products
   document.getElementById('addVideoBtn')?.addEventListener('click', () => {

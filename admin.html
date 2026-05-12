@@ -89,6 +89,10 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           Produtos
         </button>
+        <button class="sidebar__item" data-tab="faq">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          FAQ
+        </button>
         <button class="sidebar__item" data-tab="contato">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.13 7.18 2 2 0 0 1 6.09 5h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L10.09 13a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 24 20v-.08z"/></svg>
           Contato / Links
@@ -206,10 +210,9 @@
             <div class="ctrl-block">
               <h3 class="ctrl-title">Título principal</h3>
               <p class="ctrl-hint"><span class="code-badge">{palavra}</span> = <span style="color:#fc4900;font-weight:700">laranja</span> &nbsp;·&nbsp; texto normal = branco &nbsp;·&nbsp; Enter = nova linha</p>
-              <textarea id="l-headline" rows="7" class="headline-ta" spellcheck="false">{VENDA} MAIS e {MELHOR}
+              <textarea id="l-headline" rows="6" class="headline-ta" spellcheck="false">{VENDA} MAIS e {MELHOR}
 através da
-{ESTRUTURAÇÃO
-COMERCIAL}
+{ESTRUTURAÇÃO COMERCIAL}
 de alta {performance!}</textarea>
             </div>
 
@@ -306,6 +309,18 @@ de alta {performance!}</textarea>
               <div class="field full"><label>Pilar 2 — texto</label><textarea id="h-pillar2" rows="2"></textarea></div>
               <div class="field full"><label>Texto do botão principal</label><input type="text" id="h-cta" /></div>
             </div>
+            <div class="section-header" style="margin-top:1.5rem">
+              <h2>Barra de marcas parceiras</h2>
+              <p>Nomes exibidos na parte inferior do hero.</p>
+            </div>
+            <div class="form-grid">
+              <div class="field full"><label>Texto introdutório</label><input type="text" id="trust-label" /></div>
+              <div class="field"><label>Marca 1</label><input type="text" id="trust-1" /></div>
+              <div class="field"><label>Marca 2</label><input type="text" id="trust-2" /></div>
+              <div class="field"><label>Marca 3</label><input type="text" id="trust-3" /></div>
+              <div class="field"><label>Marca 4</label><input type="text" id="trust-4" /></div>
+              <div class="field"><label>Marca 5</label><input type="text" id="trust-5" /></div>
+            </div>
           </div>
           <div class="tab-preview-sticky">
             <div class="preview-label">Preview em tempo real</div>
@@ -363,6 +378,10 @@ de alta {performance!}</textarea>
               <h2>Soluções</h2>
               <p>Os 4 produtos/serviços do Grupo Amplia.</p>
             </div>
+            <div class="form-grid" style="margin-bottom:1.5rem">
+              <div class="field"><label>Eyebrow da seção</label><input type="text" id="sol-eyebrow" /></div>
+              <div class="field full"><label>Título da seção</label><input type="text" id="sol-h2" placeholder="Nossas {4 Soluções}" /><span class="field-hint">Use {texto} para laranja</span></div>
+            </div>
             <div class="ctrl-block">
               <h3 class="ctrl-title">Estilo dos cards</h3>
               <div class="preset-row">
@@ -393,6 +412,10 @@ de alta {performance!}</textarea>
               <h2>Clientes / Resultados</h2>
               <p>Empresas parceiras e resultados gerados.</p>
             </div>
+            <div class="form-grid" style="margin-bottom:1.5rem">
+              <div class="field"><label>Eyebrow da seção</label><input type="text" id="res-eyebrow" /></div>
+              <div class="field full"><label>Título da seção</label><input type="text" id="res-h2" /><span class="field-hint">Use {texto} para laranja</span></div>
+            </div>
             <div class="ctrl-block">
               <h3 class="ctrl-title">Layout dos cards</h3>
               <div class="preset-row">
@@ -422,6 +445,11 @@ de alta {performance!}</textarea>
             <div class="section-header">
               <h2>Fundadores</h2>
               <p>Informações dos sócios fundadores.</p>
+            </div>
+            <div class="form-grid" style="margin-bottom:1.5rem">
+              <div class="field"><label>Eyebrow da seção</label><input type="text" id="fnd-eyebrow" /></div>
+              <div class="field full"><label>Título</label><input type="text" id="fnd-h2" /></div>
+              <div class="field full"><label>Subtítulo</label><textarea id="fnd-sub" rows="2"></textarea></div>
             </div>
             <div class="ctrl-block">
               <h3 class="ctrl-title">Estilo dos cards</h3>
@@ -464,8 +492,44 @@ de alta {performance!}</textarea>
             <h2>Produtos</h2>
             <p>Adicione cursos, mentorias ou qualquer produto para venda.</p>
           </div>
+          <div class="section-header" style="margin-bottom:.5rem"><h3 style="font-size:.85rem;color:var(--wh2)">Cabeçalho da seção</h3></div>
+          <div class="form-grid" style="margin-bottom:1.5rem">
+            <div class="field"><label>Eyebrow</label><input type="text" id="prod-sec-eyebrow" /></div>
+            <div class="field full"><label>Título</label><input type="text" id="prod-sec-h2" /><span class="field-hint">Use {texto} para laranja</span></div>
+            <div class="field full"><label>Subtítulo</label><input type="text" id="prod-sec-sub" /></div>
+          </div>
+          <hr style="border-color:var(--bd);margin:0 0 1.5rem" />
           <div id="produtos-list"></div>
           <button type="button" class="btn-add" id="addProdutoBtn">+ Adicionar produto</button>
+        </div>
+      </section>
+
+      <!-- ═══ TAB: FAQ ═══ -->
+      <section class="tab-panel" id="tab-faq">
+        <div class="tab-split">
+          <div class="tab-controls">
+            <div class="section-header">
+              <h2>FAQ</h2>
+              <p>Perguntas frequentes exibidas no site.</p>
+            </div>
+            <div class="form-grid" style="margin-bottom:1.5rem">
+              <div class="field"><label>Eyebrow da seção</label><input type="text" id="faq-eyebrow" /></div>
+              <div class="field full"><label>Título da seção</label><input type="text" id="faq-h2" /><span class="field-hint">Use {texto} para laranja</span></div>
+              <div class="field full"><label>Subtítulo</label><textarea id="faq-sub" rows="2"></textarea></div>
+            </div>
+            <div class="section-header"><h3 style="font-size:.85rem;color:var(--wh2)">Perguntas e Respostas</h3></div>
+            <div id="faq-editors" style="margin-top:1rem"></div>
+          </div>
+          <div class="tab-preview-sticky">
+            <div class="preview-label">Preview</div>
+            <div class="preview-frame pf-faq">
+              <div style="padding:1rem">
+                <div style="font-size:.6rem;letter-spacing:.12em;color:#fc4900;text-transform:uppercase;margin-bottom:.5rem" id="pv-faq-eyebrow">DÚVIDAS FREQUENTES</div>
+                <div style="font-size:.9rem;font-weight:700;margin-bottom:1rem" id="pv-faq-title">Perguntas <span style="color:#fc4900">frequentes</span></div>
+                <div id="pv-faq-list" style="display:flex;flex-direction:column;gap:.4rem;font-size:.75rem"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
