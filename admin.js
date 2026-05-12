@@ -66,9 +66,7 @@ const DEFAULTS = {
   ],
 
   founders: [
-    { initials: 'JV', name: 'João Visoli', role: 'Expert em Vendas e Estratégias de Aquisição', statNum: '+60%', statLabel: 'taxa de conversão em reuniões', bio: 'Especialista em estruturar processos de captação e fechamento de alto desempenho.' },
     { initials: 'CL', name: 'Caetano Lorenci', role: 'Expert em Marketing e Gestão de Dados', statNum: '+6 dígitos', statLabel: 'gerenciados em anúncios', bio: 'Especialista em transformar dados em estratégias de marketing que geram receita.' },
-    { initials: 'JM', name: 'João Mortari', role: 'Expert em Criação de Conteúdo e Posicionamento', statNum: '+10M', statLabel: 'de visualizações para clientes', bio: 'Especialista em posicionar marcas e empresários como referências no mercado.' },
   ],
 
   videos: [],
