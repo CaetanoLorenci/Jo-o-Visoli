@@ -44,20 +44,42 @@ function buildVideoEmbed(v) {
   </div>`;
 }
 
-// ── LOAD CONTENT (localStorage → content.json fallback) ─────
+// ── LOAD CONTENT (server wins when newer; local cache otherwise) ─────
 async function applyAdminContent() {
   const STORAGE_KEY = 'amplia_content';
+
+  let serverData = null;
+  try {
+    const r = await fetch('content.json?v=' + Date.now(), { cache: 'no-cache' });
+    if (r.ok) {
+      const d = await r.json();
+      if (d && Object.keys(d).length) serverData = d;
+    }
+  } catch {}
+
+  let localData = null;
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) {
+      const d = JSON.parse(raw);
+      if (d && Object.keys(d).length) localData = d;
+    }
+  } catch {}
+
   let data = {};
-
-  // Fast path: admin's own saved edits (this device)
-  try { data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch {}
-
-  // Remote path: published content for all other devices
-  if (!Object.keys(data).length) {
-    try {
-      const r = await fetch('content.json?v=' + Date.now(), { cache: 'no-cache' });
-      if (r.ok) { const d = await r.json(); if (Object.keys(d).length) data = d; }
-    } catch {}
+  if (serverData && localData) {
+    const srvRev = Number(serverData._revision) || 0;
+    const locRev = Number(localData._revision) || 0;
+    if (srvRev >= locRev) {
+      data = serverData;
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(serverData)); } catch {}
+    } else {
+      data = localData;
+    }
+  } else if (serverData) {
+    data = serverData;
+  } else if (localData) {
+    data = localData;
   }
 
   if (!Object.keys(data).length) return;

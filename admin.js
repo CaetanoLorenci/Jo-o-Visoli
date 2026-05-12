@@ -160,7 +160,29 @@ async function setPassword(newPwd) {
 })();
 
 function loadData()     { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch { return {}; } }
-function saveData(data) { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+function saveData(data) {
+  data._revision = Date.now();
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+// Pull content.json from the repo and overwrite localStorage when the server
+// has a newer _revision. Ensures direct edits to content.json propagate to the
+// admin's own browser instead of being shadowed by a stale local cache.
+async function syncFromServer() {
+  try {
+    const r = await fetch('content.json?v=' + Date.now(), { cache: 'no-cache' });
+    if (!r.ok) return;
+    const serverData = await r.json();
+    if (!serverData || !Object.keys(serverData).length) return;
+    const localData = loadData();
+    const srvRev = Number(serverData._revision) || 0;
+    const locRev = Number(localData._revision) || 0;
+    if (srvRev > locRev) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(serverData));
+    }
+  } catch {}
+}
+
 function get(key) {
   const d = loadData();
   if (key in d) return d[key];
@@ -177,7 +199,7 @@ const loginError  = document.getElementById('loginError');
 function showDashboard() {
   loginScreen.style.display = 'none';
   dashboard.hidden = false;
-  initDashboard();
+  initDashboard().catch(err => console.error('[admin] initDashboard failed:', err));
 }
 
 if (sessionStorage.getItem(SESSION_KEY) === '1') showDashboard();
@@ -771,8 +793,11 @@ function wirePresets(selector, hiddenId, attr) {
 // ─────────────────────────────────────────────
 // COLLECT DATA
 // ─────────────────────────────────────────────
+function countRendered(idPrefix) {
+  return document.querySelectorAll(`[id^="${idPrefix}"]`).length;
+}
 function collectStats() {
-  return DEFAULTS.stats.map((_, i) => ({
+  return Array.from({ length: countRendered('st-val-') }, (_, i) => ({
     prefix: document.getElementById(`st-pre-${i}`)?.value ?? '',
     value:  document.getElementById(`st-val-${i}`)?.value ?? '',
     suffix: document.getElementById(`st-suf-${i}`)?.value ?? '',
@@ -780,7 +805,7 @@ function collectStats() {
   }));
 }
 function collectSolutions() {
-  return DEFAULTS.solutions.map((_, i) => ({
+  return Array.from({ length: countRendered('so-title-') }, (_, i) => ({
     num:       document.getElementById(`so-num-${i}`)?.value   ?? '',
     icon:      document.getElementById(`so-icon-${i}`)?.value  ?? '',
     title:     document.getElementById(`so-title-${i}`)?.value ?? '',
@@ -790,7 +815,7 @@ function collectSolutions() {
   }));
 }
 function collectClients() {
-  return DEFAULTS.clients.map((_, i) => ({
+  return Array.from({ length: countRendered('cl-name-') }, (_, i) => ({
     tag:    document.getElementById(`cl-tag-${i}`)?.value  ?? '',
     name:   document.getElementById(`cl-name-${i}`)?.value ?? '',
     value:  document.getElementById(`cl-val-${i}`)?.value  ?? '',
@@ -799,7 +824,7 @@ function collectClients() {
   }));
 }
 function collectFounders() {
-  return DEFAULTS.founders.map((_, i) => ({
+  return Array.from({ length: countRendered('fn-name-') }, (_, i) => ({
     initials:  document.getElementById(`fn-ini-${i}`)?.value  ?? '',
     name:      document.getElementById(`fn-name-${i}`)?.value  ?? '',
     role:      document.getElementById(`fn-role-${i}`)?.value  ?? '',
@@ -935,7 +960,18 @@ async function publishContent() {
 }
 
 // ── INIT ──────────────────────────────────────────────────────
-function initDashboard() {
+let _previewDebounce;
+function schedulePreviewUpdate() {
+  clearTimeout(_previewDebounce);
+  _previewDebounce = setTimeout(updateAllPreviews, 120);
+}
+
+async function initDashboard() {
+  // Pull latest published content before populating editors so that direct
+  // edits to content.json (or other devices' publishes) don't get hidden by
+  // a stale local cache on this device.
+  await syncFromServer();
+
   populateSimpleFields();
   populateLayoutFields();
   buildStatEditors();
@@ -965,10 +1001,11 @@ function initDashboard() {
   wirePresets('[data-clifmt]',    'c-fmt',      'clifmt');
   wirePresets('[data-fndstyle]',  'f-style',    'fndstyle');
 
-  // Wire all inputs → live preview
+  // Wire all inputs → debounced live preview (avoids rebuilding every preview
+  // pane on every keystroke, which made the panel feel laggy).
   document.querySelectorAll('input:not([type=password]):not([type=hidden]), textarea').forEach(el => {
-    el.addEventListener('input', updateAllPreviews);
-    el.addEventListener('change', updateAllPreviews);
+    el.addEventListener('input', schedulePreviewUpdate);
+    el.addEventListener('change', schedulePreviewUpdate);
   });
 
   // ── Logo upload ──
