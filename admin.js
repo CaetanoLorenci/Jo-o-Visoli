@@ -7,7 +7,7 @@
 const DEFAULTS = {
   'g-company':    'Grupo Amplia',
   'g-tagline':    'Estruturação comercial de alta performance.',
-  'g-whatsapp':   '5549999999999',
+  'g-whatsapp':   '5549936181867',
   'g-instagram':  'grupo.amplia',
   'g-logo-size':  36,
 

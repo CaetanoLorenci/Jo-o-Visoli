@@ -285,8 +285,10 @@ cite { color: var(--or); font-style: normal; font-size: .85rem; font-weight: 700
 .fundadores { padding: var(--gap) 0; }
 .fundadores__title { font-size: clamp(2.5rem,7vw,5.5rem); font-weight: 900; font-family: var(--ff-head); text-transform: uppercase; text-align: center; margin-bottom: .75rem; }
 .fundadores__sub { font-size: 1rem; margin-bottom: 2.75rem; font-family: var(--ff-head); font-weight: 700; color: var(--wh2); text-transform: uppercase; letter-spacing: .04em; }
-.fund-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.fund-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; }
 .fund-card {
+  flex: 1 1 280px;
+  max-width: 360px;
   background: var(--bk2); border: 1px solid var(--bd);
   border-radius: var(--r); padding: 2.25rem 1.75rem; text-align: center;
   transition: border-color var(--tr), transform var(--tr), box-shadow var(--tr);
@@ -294,6 +296,7 @@ cite { color: var(--or); font-style: normal; font-size: .85rem; font-weight: 700
 .fund-card:hover, .fund-card--center { border-color: var(--or); }
 .fund-card--center { box-shadow: 0 0 40px rgba(252,73,0,.12); }
 .fund-card:hover { transform: translateY(-4px); }
+.fund-card:only-child { max-width: 460px; padding: 2.75rem 2.25rem; }
 .fund-card__avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg,var(--or),var(--or2)); display: flex; align-items: center; justify-content: center; font-family: var(--ff-head); font-weight: 900; font-size: 1.35rem; color: var(--wh); margin: 0 auto 1.1rem; }
 .fund-card h3 { font-family: var(--ff-head); font-weight: 800; font-size: 1.1rem; color: var(--wh); text-transform: uppercase; margin-bottom: .3rem; }
 .fund-card__role { display: block; font-family: var(--ff-head); font-weight: 700; font-size: .72rem; color: var(--or); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 1rem; }
