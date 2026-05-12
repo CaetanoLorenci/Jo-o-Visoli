@@ -132,12 +132,12 @@
   ],
   "founders": [
     {
-      "initials": "",
-      "name": "",
-      "role": "",
-      "statNum": "",
-      "statLabel": "",
-      "bio": ""
+      "initials": "JV",
+      "name": "João Visoli",
+      "role": "Expert em Vendas e Estratégias de Aquisição",
+      "statNum": "+60%",
+      "statLabel": "taxa de conversão em reuniões",
+      "bio": "Especialista em estruturar processos de captação e fechamento de alto desempenho."
     },
     {
       "initials": "CL",
@@ -148,17 +148,17 @@
       "bio": "Especialista em transformar dados em estratégias de marketing que geram receita."
     },
     {
-      "initials": "",
-      "name": "",
-      "role": "",
-      "statNum": "",
-      "statLabel": "",
-      "bio": ""
+      "initials": "JM",
+      "name": "João Mortari",
+      "role": "Expert em Criação de Conteúdo e Posicionamento",
+      "statNum": "+10M",
+      "statLabel": "de visualizações para clientes",
+      "bio": "Especialista em posicionar marcas e empresários como referências no mercado."
     }
   ],
   "videos": [],
   "produtos": [],
-  "l-headline": "{VENDA} MAIS e {MELHOR}\natravés da\n{ESTRUTURAÇÃO}\n{COMERCIAL}\nde alta {performance!}",
+  "l-headline": "{VENDA} MAIS e {MELHOR}\natravés da\n{ESTRUTURAÇÃO COMERCIAL}\nde alta {performance!}",
   "l-fontsize": "xlarge",
   "l-align": "center",
   "l-bg": "black",
@@ -190,7 +190,7 @@
   "pq-cta-text": "Se você se identificou com pelo menos uma dessas situações, o Grupo Amplia é para você.",
   "pq-cta-btn": "Quero resolver isso agora",
   "pq-icon-1": "😤",
-  "pq-text-1": "Você é o único que sabe vender na empresa e se sente refém do seu próprio negócio",
+  "pq-text-1": "Você é o único que sabe vender na empresa e se sente refém do seu próprio negócio.",
   "pq-icon-2": "📉",
   "pq-text-2": "Suas vendas são inconsistentes — mês bom, mês ruim, sem previsibilidade",
   "pq-icon-3": "🤝",
@@ -200,5 +200,46 @@
   "pq-icon-5": "📣",
   "pq-text-5": "Seu marketing não gera leads qualificados para o seu time de vendas fechar",
   "pq-icon-6": "🎯",
-  "pq-text-6": "Você quer escalar, mas não tem processos comerciais estruturados"
+  "pq-text-6": "Você quer escalar, mas não tem processos comerciais estruturados",
+  "sol-eyebrow": "O que oferecemos",
+  "sol-h2": "Nossas {4 Soluções}",
+  "res-eyebrow": "Prova social",
+  "res-h2": "Empresas que {confiam} no Grupo Amplia",
+  "fnd-eyebrow": "Nossa equipe",
+  "fnd-h2": "FUNDADORES",
+  "fnd-sub": "Somos uma estruturadora comercial. O foco é aumentar a sua precificação e estruturar o seu comercial.",
+  "trust-label": "Empresas que confiam em nós:",
+  "trust-1": "Colcci",
+  "trust-2": "Tommy Hilfiger",
+  "trust-3": "Track & Field",
+  "trust-4": "Marlon Veículos",
+  "trust-5": "F4 Autocenter",
+  "prod-sec-eyebrow": "Produtos",
+  "prod-sec-h2": "Invista no seu {crescimento}",
+  "prod-sec-sub": "Cursos, mentorias e programas para estruturar e escalar seu comercial.",
+  "faq-eyebrow": "Dúvidas frequentes",
+  "faq-h2": "Perguntas {frequentes}",
+  "faq-sub": "Ainda com dúvidas? Fale diretamente com a nossa equipe no WhatsApp.",
+  "faq": [
+    {
+      "q": "Para qual tipo de empresa o Grupo Amplia atende?",
+      "a": "Atendemos empresários de qualquer segmento que queiram estruturar seu comercial e escalar as vendas. Já atendemos moda (Colcci, Tommy Hilfiger, Track & Field), automotivo (Marlon Veículos, Chama Autocar, F4 Autocenter), gastronomia (Alecrim) e outros."
+    },
+    {
+      "q": "Qual é o prazo para ver resultados?",
+      "a": "Nossos clientes do setor automotivo já geramos resultados no 1º mês (R$350K para Marlon Veículos e R$100K para Chama Autocar). O prazo varia de acordo com o segmento e o ponto de partida do seu comercial, mas trabalhamos para gerar resultado o mais rápido possível."
+    },
+    {
+      "q": "Como funciona a Mentoria Comercial?",
+      "a": "Montamos todos os seus processos comerciais do zero: pesquisa de ICP, script de cold call, processo de apresentação para gerar valor antes do preço, gestão de equipe e encontros 1x1 para estruturar e tirar dúvidas. Nossa taxa de fechamento em reuniões é de 60%."
+    },
+    {
+      "q": "Vocês trabalham com empresas de fora do Brasil?",
+      "a": "Atualmente, nossa atuação é focada em empresas brasileiras. Se você tiver interesse em uma parceria internacional, entre em contato para conversarmos sobre viabilidade."
+    },
+    {
+      "q": "Como começar a trabalhar com o Grupo Amplia?",
+      "a": "É simples: clique no botão \"Falar com a equipe\", entre em contato via WhatsApp ou Instagram, e nossa equipe vai apresentar as soluções mais adequadas para o seu negócio."
+    }
+  ]
 }
