@@ -4,52 +4,6 @@ Leia este arquivo inteiro antes de fazer qualquer alteração. Ele contém o con
 
 ---
 
-## ⚠ MIGRAÇÃO PENDENTE — Leia primeiro se for nova sessão
-
-O repositório está sendo migrado da conta de João Visoli para a conta pessoal de **Caetano Lorenci**.
-
-### Status da migração
-- [x] `admin.js` já atualizado com `GITHUB_OWNER = 'CaetanoLorenci'`
-- [x] Repositório transferido para `CaetanoLorenci/Jo-o-Visoli`
-- [x] GitHub Pages ativo em `caetanolorenci.github.io/Jo-o-Visoli/`
-- [x] Novo PAT gerado pela conta `CaetanoLorenci`
-- [x] Novo PAT salvo no painel admin
-
-### Passos para completar a migração (fazer uma única vez)
-
-**Passo 1 — Transferir o repositório**
-1. Acessar `github.com/joaovisoli617-ops/Jo-o-Visoli` com a conta de João Visoli
-2. Settings → Danger Zone → Transfer ownership
-3. Transferir para o usuário `CaetanoLorenci`
-4. O repositório passará a ser `github.com/CaetanoLorenci/Jo-o-Visoli`
-
-**Passo 2 — Ativar GitHub Pages no novo repositório**
-1. Acessar `github.com/CaetanoLorenci/Jo-o-Visoli`
-2. Settings → Pages
-3. Source: `Deploy from a branch` → Branch: `main` → pasta: `/ (root)`
-4. Salvar — o site ficará disponível em `https://caetanolorenci.github.io/Jo-o-Visoli/`
-
-**Passo 3 — Gerar novo PAT**
-1. GitHub (conta CaetanoLorenci) → Settings → Developer settings → Personal access tokens → Fine-grained tokens
-2. Criar token com permissão `Contents: Read and write` para o repositório `Jo-o-Visoli`
-3. Copiar o token gerado
-
-**Passo 4 — Salvar o token no painel admin**
-1. Abrir o site → `/admin.html` → senha `Amplia2026`
-2. Aba "Senha" → campo "GitHub Token" → colar o token → "Salvar Token"
-3. Clicar "Publicar" para confirmar que está funcionando
-
-**Passo 5 — Atualizar o remote local (se estiver usando Claude Code)**
-```bash
-git remote set-url origin "http://local_proxy@127.0.0.1:43433/CaetanoLorenci/Jo-o-Visoli.git"
-```
-
-### Após a migração
-- Atualizar a seção 2 deste arquivo com as novas URLs
-- Remover este bloco "MIGRAÇÃO PENDENTE"
-
----
-
 ## 1. Sobre o Negócio — Grupo Amplia
 
 **O Grupo Amplia é uma empresa de marketing e estruturação comercial de alta performance.**
@@ -102,11 +56,11 @@ Direto, confiante, orientado a resultado. Linguagem de alta performance. Sem rod
 
 ## 2. Repositório e Hospedagem
 
-- **Repositório GitHub:** `CaetanoLorenci/Jo-o-Visoli` (antes estava em `joaovisoli617-ops/Jo-o-Visoli` — conta de João Visoli)
+- **Repositório GitHub:** `CaetanoLorenci/Jo-o-Visoli`
 - **Branch principal (live):** `main`
 - **Branch de feature (legado):** `claude/add-chat-feature-WgQq7` — já foi mergeada em `main`, não usar mais
 - **Hospedagem:** GitHub Pages servindo a partir da branch `main`
-- **URL do site:** `https://caetanolorenci.github.io/Jo-o-Visoli/` (ativa após concluir a migração)
+- **URL do site:** `https://caetanolorenci.github.io/Jo-o-Visoli/`
 
 ### Arquivos do projeto
 ```
@@ -167,7 +121,7 @@ Se `localStorage` estiver preenchido, ele tem prioridade. Os outros dispositivos
 ## 5. Token GitHub (PAT) — Como Usar
 
 ### Para o botão "Publicar" no painel admin
-O admin insere o PAT na aba "Senha" do painel → clica "Salvar Token". O token fica em `localStorage` (`amplia_github_token`) e é usado pelo botão Publicar para chamar a GitHub Contents API (`PUT /repos/joaovisoli617-ops/Jo-o-Visoli/contents/content.json`).
+O admin insere o PAT na aba "Senha" do painel → clica "Salvar Token". O token fica em `localStorage` (`amplia_github_token`) e é usado pelo botão Publicar para chamar a GitHub Contents API (`PUT /repos/CaetanoLorenci/Jo-o-Visoli/contents/content.json`).
 
 ### Para push via terminal (Claude Code)
 O remote padrão do repositório usa um proxy local que bloqueia push direto. Para fazer push via terminal, é necessário trocar temporariamente o remote:
@@ -339,9 +293,9 @@ git add <arquivos modificados>
 git commit -m "descrição clara da mudança"
 
 # 5. Push para main (com PAT)
-git remote set-url origin "https://TOKEN@github.com/joaovisoli617-ops/Jo-o-Visoli.git"
+git remote set-url origin "https://TOKEN@github.com/CaetanoLorenci/Jo-o-Visoli.git"
 GIT_TERMINAL_PROMPT=0 git push origin main-local:main
-git remote set-url origin "http://local_proxy@127.0.0.1:43433/joaovisoli617-ops/Jo-o-Visoli.git"
+git remote set-url origin "http://local_proxy@127.0.0.1:43433/CaetanoLorenci/Jo-o-Visoli.git"
 ```
 
 ### Regras importantes
