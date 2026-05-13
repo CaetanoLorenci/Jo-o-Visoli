@@ -1,0 +1,14 @@
+# Allow all crawlers by default
+User-agent: *
+Allow: /
+
+# Explicitly allow Meta / Facebook crawlers (required for domain verification,
+# ad destination checks, and Open Graph rich previews).
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
