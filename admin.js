@@ -99,7 +99,7 @@ const DEFAULTS = {
   'res-eyebrow': 'Prova social',
   'res-h2':      'Empresas que {confiam} no Grupo Amplia',
   'fnd-eyebrow': 'Nossa equipe',
-  'fnd-h2':      'FUNDADORES',
+  'fnd-h2':      'FUNDADOR',
   'fnd-sub':     'Somos uma estruturadora comercial. O foco é aumentar a sua precificação e estruturar o seu comercial.',
 
   // Hero trust bar
@@ -229,7 +229,7 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
 const TAB_TITLES = {
   geral: 'Configurações Gerais', layout: 'Layout do Hero', hero: 'Textos do Hero',
   numeros: 'Números / Stats', solucoes: 'Soluções', clientes: 'Clientes / Resultados',
-  fundadores: 'Fundadores', videos: 'Portfólio de Vídeos',
+  fundadores: 'Fundador', videos: 'Portfólio de Vídeos',
   faq: 'FAQ', contato: 'Contato / Links', senha: 'Alterar Senha',
 };
 

@@ -238,7 +238,7 @@
   "res-eyebrow": "Prova social",
   "res-h2": "Empresas que {confiam} no Grupo Amplia",
   "fnd-eyebrow": "Nossa equipe",
-  "fnd-h2": "FUNDADORES",
+  "fnd-h2": "FUNDADOR",
   "fnd-sub": "Somos uma estruturadora comercial. O foco é aumentar a sua precificação e estruturar o seu comercial.",
   "trust-label": "Empresas que confiam em nós:",
   "trust-1": "Colcci",
@@ -271,5 +271,5 @@
       "a": "É simples: clique no botão \"Falar com a equipe\", entre em contato via WhatsApp ou Instagram, e nossa equipe vai apresentar as soluções mais adequadas para o seu negócio."
     }
   ],
-  "_revision": 1778696721922
+  "_revision": 1778701298168
 }
