@@ -4,7 +4,8 @@
 
 function extractYouTubeId(url) {
   if (!url) return null;
-  const m = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+  // Supports watch?v=, /embed/, /shorts/ and youtu.be/ID — all 11-char IDs.
+  const m = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
   return m ? m[1] : null;
 }
 function extractVimeoId(url) {
@@ -25,7 +26,9 @@ function buildVideoEmbed(v) {
   const vmId = extractVimeoId(v.url);
   const gdId = extractDriveId(v.url);
   if (ytId) {
-    embed = `<iframe src="https://www.youtube.com/embed/${ytId}" frameborder="0" allowfullscreen loading="lazy" title="${v.title}"></iframe>`;
+    // rel=0 removes the "More videos" grid at the end; modestbranding hides
+    // the big YouTube watermark; playsinline keeps iOS from forcing fullscreen.
+    embed = `<iframe src="https://www.youtube.com/embed/${ytId}?rel=0&modestbranding=1&playsinline=1" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy" title="${v.title}"></iframe>`;
   } else if (vmId) {
     embed = `<iframe src="https://player.vimeo.com/video/${vmId}" frameborder="0" allowfullscreen loading="lazy" title="${v.title}"></iframe>`;
   } else if (gdId) {
