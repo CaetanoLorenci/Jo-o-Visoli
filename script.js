@@ -56,6 +56,11 @@ function buildVideoEmbed(v) {
 }
 
 // ── LOAD CONTENT (server wins when newer; local cache otherwise) ─────
+// Any cached payload older than this revision predates the YouTube migration
+// and the matching title fix — wipe it so visitors stop seeing stale titles
+// like "F4 Autocenter — Motion" stuck on a TBCH video.
+const MIN_VALID_REVISION = 1778691112173;
+
 async function applyAdminContent() {
   const STORAGE_KEY = 'amplia_content';
 
@@ -76,6 +81,12 @@ async function applyAdminContent() {
       if (d && Object.keys(d).length) localData = d;
     }
   } catch {}
+
+  // Force-discard cached payloads from before the YouTube/title migration.
+  if (localData && (Number(localData._revision) || 0) < MIN_VALID_REVISION) {
+    try { localStorage.removeItem(STORAGE_KEY); } catch {}
+    localData = null;
+  }
 
   let data = {};
   if (serverData && localData) {

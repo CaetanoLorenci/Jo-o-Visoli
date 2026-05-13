@@ -159,11 +159,22 @@ function saveData(data) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
 }
 
+// Anything older than this is from before the YouTube migration and matching
+// title fix — discard regardless of timestamps.
+const MIN_VALID_REVISION = 1778691112173;
+
 // Pull content.json from the repo and overwrite localStorage when the server
 // has a newer _revision. Ensures direct edits to content.json propagate to the
 // admin's own browser instead of being shadowed by a stale local cache.
 async function syncFromServer() {
   try {
+    // Drop pre-migration payloads up front so the comparison below can't keep
+    // them around.
+    const localBefore = loadData();
+    if (localBefore && (Number(localBefore._revision) || 0) < MIN_VALID_REVISION) {
+      localStorage.removeItem(STORAGE_KEY);
+    }
+
     const r = await fetch('content.json?v=' + Date.now(), { cache: 'no-cache' });
     if (!r.ok) return;
     const serverData = await r.json();
