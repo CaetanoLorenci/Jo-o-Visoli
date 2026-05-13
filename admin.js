@@ -6,26 +6,26 @@
 // ── DEFAULTS ────────────────────────────────────────────────
 const DEFAULTS = {
   'g-company':    'Grupo Amplia',
-  'g-tagline':    'Estruturação comercial de alta performance.',
+  'g-tagline':    'Marketing que gera vendas, não impressões.',
   'g-whatsapp':   '5549936181867',
   'g-whatsapp-msg':'Oi! Vim pelo site e quero entender como o Grupo Amplia pode me ajudar a vender mais.',
   'g-instagram':  'grupo.amplia',
   'g-logo-size':  36,
 
   'h-eyebrow':  'A nossa proposta de valor',
-  'h-pillar1':  'Para construir um negócio que venda todos os dias, de forma independente do dono.',
-  'h-pillar2':  'Através de uma metodologia que nós vivenciamos diariamente no Grupo Amplia.',
-  'h-cta':      'Quero estruturar meu comercial',
+  'h-pillar1':  'Identidade, conteúdo, audiovisual e tráfego pago numa operação de marketing completa — para você não depender só de indicação.',
+  'h-pillar2':  'Mais de R$500K gerados para empresários brasileiros em 14 meses. Antes de aplicar em você, aplicamos em nós mesmos.',
+  'h-cta':      'Falar no WhatsApp',
 
   'sb-eyebrow':     'Quem somos',
-  'sb-h2':          'Somos uma {Estruturadora Comercial}',
+  'sb-h2':          'Somos uma {Agência de Marketing de Performance}',
   'sb-quote':       'Construímos um negócio que vende todos os dias, de forma independente do dono — e ensinamos nossos clientes a fazer o mesmo.',
   'sb-cite':        '— Grupo Amplia',
   'sb-p1':          'O foco aqui é aumentar a sua precificação e estruturar o seu comercial. Somos uma empresa jovem com 14 meses de mercado e resultados que falam por si: mais de meio milhão de reais gerados para empresários brasileiros em setores do varejo, automotivo e serviços.',
   'sb-p2':          'Antes de levar a metodologia para os nossos clientes, nós a aplicamos em nós mesmos — e dobramos o nosso próprio faturamento, saindo de R$13K para R$25K ao mês no início de 2024.',
   'sb-b1':          'Metodologia vivenciada internamente',
   'sb-b2':          'Resultados mensuráveis desde o 1º mês',
-  'sb-b3':          'Processos completos: captação ao fechamento',
+  'sb-b3':          'Operação completa: marca, conteúdo, vídeo e tráfego',
   'sb-badge-from':  'R$13K',
   'sb-badge-to':    'R$25K',
   'sb-badge-label': 'nosso próprio faturamento dobrado',
@@ -78,7 +78,7 @@ const DEFAULTS = {
   'ct-igbtn': 'Ver no Instagram',
 
   // Layout
-  'l-headline':       '{VENDA} MAIS e {MELHOR}\natravés da\n{ESTRUTURAÇÃO COMERCIAL}\nde alta {performance!}',
+  'l-headline':       '{MARKETING} que entrega\nVENDAS, não {impressões}.\nPara empresários que querem\n{previsibilidade}.',
   'l-fontsize':       'xlarge',
   'l-align':          'center',
   'l-italic':         true,
