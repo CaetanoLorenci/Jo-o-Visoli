@@ -127,9 +127,11 @@ async function applyAdminContent() {
   }
   const wa = data['g-whatsapp'];
   const ig = data['g-instagram'];
+  const waMsg = data['g-whatsapp-msg'] || 'Oi! Vim pelo site e quero entender como o Grupo Amplia pode me ajudar a vender mais.';
   if (wa) {
     const cleanWa = wa.replace(/\D/g, ''); // remove espaços, traços, parênteses etc.
-    document.querySelectorAll('a[href*="wa.me"]').forEach(a => a.href = `https://wa.me/${cleanWa}`);
+    const suffix = waMsg ? '?text=' + encodeURIComponent(waMsg) : '';
+    document.querySelectorAll('a[href*="wa.me"]').forEach(a => a.href = `https://wa.me/${cleanWa}${suffix}`);
   }
   if (ig) {
     const igUrl = ig.startsWith('http') ? ig : `https://instagram.com/${ig}`;
@@ -452,6 +454,18 @@ async function applyAdminContent() {
 
 }
 applyAdminContent();
+
+// ── META PIXEL: Lead event on WhatsApp click ─
+// Fires a 'Lead' Standard Event every time someone taps a wa.me link.
+// Meta Ads uses this to optimize delivery for people who actually start
+// WhatsApp conversations, lowering CPL over time.
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href*="wa.me"]');
+  if (!a) return;
+  if (typeof window.fbq === 'function') {
+    try { window.fbq('track', 'Lead', { content_name: 'WhatsApp click' }); } catch {}
+  }
+}, true);
 
 // ── DRIVE VIDEO: lightbox ───────────────────
 // Click on a poster opens the Drive iframe inside a near-fullscreen overlay.

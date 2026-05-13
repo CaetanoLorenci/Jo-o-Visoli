@@ -8,6 +8,7 @@ const DEFAULTS = {
   'g-company':    'Grupo Amplia',
   'g-tagline':    'Estruturação comercial de alta performance.',
   'g-whatsapp':   '5549936181867',
+  'g-whatsapp-msg':'Oi! Vim pelo site e quero entender como o Grupo Amplia pode me ajudar a vender mais.',
   'g-instagram':  'grupo.amplia',
   'g-logo-size':  36,
 
@@ -290,7 +291,7 @@ const FONT_SIZE_CSS = {
 // ─────────────────────────────────────────────
 function populateSimpleFields() {
   [
-    'g-company','g-tagline','g-whatsapp','g-instagram',
+    'g-company','g-tagline','g-whatsapp','g-whatsapp-msg','g-instagram',
     'h-eyebrow','h-pillar1','h-pillar2','h-cta',
     'ct-title','ct-sub','ct-wabtn','ct-igbtn',
     'sb-eyebrow','sb-h2','sb-quote','sb-cite','sb-p1','sb-p2','sb-b1','sb-b2','sb-b3',
@@ -778,7 +779,7 @@ function collectFounders() {
 
 function collectAll() {
   const d = {};
-  ['g-company','g-tagline','g-whatsapp','g-instagram','h-eyebrow','h-pillar1','h-pillar2','h-cta','ct-title','ct-sub','ct-wabtn','ct-igbtn'].forEach(id => {
+  ['g-company','g-tagline','g-whatsapp','g-whatsapp-msg','g-instagram','h-eyebrow','h-pillar1','h-pillar2','h-cta','ct-title','ct-sub','ct-wabtn','ct-igbtn'].forEach(id => {
     const el = document.getElementById(id);
     if (el) d[id] = el.value;
   });
