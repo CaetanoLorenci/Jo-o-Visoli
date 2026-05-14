@@ -61,7 +61,7 @@ const DEFAULTS = {
     { tag: 'Moda esportiva', name: 'Track & Field', value: 'Marketing ativo', period: 'campanha contínua', desc: 'Operação contínua de marketing e conteúdo para a marca de moda esportiva.' },
     { tag: 'Serviços', name: 'F4 Autocenter', value: '✓', period: 'parceria ativa', desc: 'Um dos maiores autocenters do Oeste de SC.' },
     { tag: 'Gastronomia', name: 'Alecrim', value: '✓', period: 'parceria ativa', desc: 'Um dos maiores empórios e cafeterias da região.' },
-    { tag: 'Mentor', name: 'Ascendy – Ale Ferreira', value: '+180K', period: 'seguidores construídos', desc: 'Mentor que ajudou a estruturar a empresa.' },
+    { tag: 'Mentoria recebida', name: 'Ascendy – Ale Ferreira', value: 'Nosso mentor', period: '+180K seguidores construídos', desc: 'Ale Ferreira não é cliente — é mentor do Grupo Amplia. Referência em empreendedorismo jovem que ajudou a estruturar a nossa empresa.' },
   ],
 
   founders: [

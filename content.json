@@ -110,11 +110,11 @@
       "desc": "Um dos maiores empórios e cafeterias da região."
     },
     {
-      "tag": "Mentor",
+      "tag": "Mentoria recebida",
       "name": "Ascendy – Ale Ferreira",
-      "value": "+180K",
-      "period": "seguidores construídos",
-      "desc": "Mentor que ajudou a estruturar a empresa."
+      "value": "Nosso mentor",
+      "period": "+180K seguidores construídos",
+      "desc": "Ale Ferreira não é cliente — é mentor do Grupo Amplia. Referência em empreendedorismo jovem que ajudou a estruturar a nossa empresa."
     }
   ],
   "founders": [
@@ -258,5 +258,5 @@
       "a": "É simples: clique no botão \"Falar com a equipe\", entre em contato via WhatsApp ou Instagram, e nossa equipe vai apresentar as soluções mais adequadas para o seu negócio."
     }
   ],
-  "_revision": 1778766850330
+  "_revision": 1778767157645
 }
