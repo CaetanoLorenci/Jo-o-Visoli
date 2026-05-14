@@ -14,21 +14,21 @@ const DEFAULTS = {
 
   'h-eyebrow':  'A nossa proposta de valor',
   'h-pillar1':  'Identidade, conteúdo, audiovisual e tráfego pago numa operação de marketing completa — para você não depender só de indicação.',
-  'h-pillar2':  'Mais de R$500K gerados para empresários brasileiros em 14 meses. Antes de aplicar em você, aplicamos em nós mesmos.',
+  'h-pillar2':  'Marcas como Tommy Hilfiger, Colcci, Marlon Veículos e F4 Autocenter no nosso portfólio. Antes de aplicar em você, aplicamos em nós mesmos.',
   'h-cta':      'Falar no WhatsApp',
 
   'sb-eyebrow':     'Quem somos',
   'sb-h2':          'Somos uma {Agência de Marketing de Performance}',
   'sb-quote':       'Construímos um negócio que vende todos os dias, de forma independente do dono — e ensinamos nossos clientes a fazer o mesmo.',
   'sb-cite':        '— Grupo Amplia',
-  'sb-p1':          'O foco aqui é aumentar a sua precificação e estruturar o seu comercial. Somos uma empresa jovem com 14 meses de mercado e resultados que falam por si: mais de meio milhão de reais gerados para empresários brasileiros em setores do varejo, automotivo e serviços.',
-  'sb-p2':          'Antes de levar a metodologia para os nossos clientes, nós a aplicamos em nós mesmos — e dobramos o nosso próprio faturamento, saindo de R$13K para R$25K ao mês no início de 2024.',
+  'sb-p1':          'O foco aqui é gerar demanda previsível pro seu negócio. Somos uma empresa com 14 meses de mercado, atuando com empresários brasileiros nos setores de varejo, automotivo, gastronomia, moda e serviços.',
+  'sb-p2':          'Antes de levar a metodologia para os nossos clientes, nós a aplicamos em nós mesmos. Cada estratégia é validada internamente antes de chegar ao seu negócio.',
   'sb-b1':          'Metodologia vivenciada internamente',
   'sb-b2':          'Resultados mensuráveis desde o 1º mês',
   'sb-b3':          'Operação completa: marca, conteúdo, vídeo e tráfego',
-  'sb-badge-from':  'R$13K',
-  'sb-badge-to':    'R$25K',
-  'sb-badge-label': 'nosso próprio faturamento dobrado',
+  'sb-badge-from':  '+10M',
+  'sb-badge-to':    'VIEWS',
+  'sb-badge-label': 'geradas para clientes em audiovisual',
 
   'pq-eyebrow': 'Para quem é',
   'pq-title':   'Você se identifica com alguma dessas situações?',
@@ -42,7 +42,7 @@ const DEFAULTS = {
   'pq-cta-btn':  'Quero resolver isso agora',
 
   stats: [
-    { prefix: 'R$', value: '500', suffix: 'mil+', label: 'em faturamento gerado para clientes' },
+    { prefix: '+', value: '10',  suffix: 'M',     label: 'visualizações geradas para clientes' },
     { prefix: '',   value: '14',  suffix: ' meses', label: 'de mercado com resultados comprovados' },
     { prefix: '',   value: '60',  suffix: '%', label: 'de taxa de fechamento em reuniões de vendas' },
     { prefix: '',   value: '8',   suffix: '+ clientes', label: 'de grande porte atendidos' },
@@ -56,14 +56,14 @@ const DEFAULTS = {
   ],
 
   clients: [
-    { tag: 'Automotivo', name: 'Marlon Veículos', value: '+R$350K', period: 'bruto no 1º mês', desc: 'Mais de R$350 mil em venda de veículos no primeiro mês.' },
-    { tag: 'Automotivo', name: 'Chama Autocar', value: '+R$100K', period: 'bruto no 1º mês', desc: 'Mais de R$100 mil em vendas no primeiro mês de assessoria.' },
-    { tag: 'Moda', name: 'Colcci', value: 'R$60K', period: 'em vendas geradas', desc: 'Resultados expressivos para uma das maiores marcas de moda do Brasil.' },
-    { tag: 'Moda esportiva', name: 'Track & Field', value: 'R$30K', period: 'em vendas geradas', desc: 'Estratégias comerciais que impulsionaram as vendas de forma consistente.' },
+    { tag: 'Automotivo', name: 'Marlon Veículos', value: 'Funil completo', period: 'implementado no 1º mês', desc: 'Reestruturação completa do funil de vendas da concessionária — do lead à conversão.' },
+    { tag: 'Automotivo', name: 'Chama Autocar', value: 'Operação estruturada', period: 'do zero no 1º mês', desc: 'Implementação do processo comercial completo para auto center, do marketing à abordagem do cliente.' },
+    { tag: 'Moda', name: 'Colcci', value: 'Posicionamento', period: 'estratégia ativa', desc: 'Operação digital para uma das maiores marcas de moda do Brasil.' },
+    { tag: 'Moda esportiva', name: 'Track & Field', value: 'Marketing ativo', period: 'campanha contínua', desc: 'Operação contínua de marketing e conteúdo para a marca de moda esportiva.' },
     { tag: 'Moda premium', name: 'Tommy Hilfiger', value: '✓', period: 'parceria ativa', desc: 'Marca reconhecida mundialmente confiou no Grupo Amplia.' },
     { tag: 'Serviços', name: 'F4 Autocenter', value: '✓', period: 'parceria ativa', desc: 'Um dos maiores autocenters do Oeste de SC.' },
     { tag: 'Gastronomia', name: 'Alecrim', value: '✓', period: 'parceria ativa', desc: 'Um dos maiores empórios e cafeterias da região.' },
-    { tag: 'Mentor', name: 'Ascendy – Ale Ferreira', value: '+180K', period: 'seguidores | R$200K aos 18 anos', desc: 'Mentor que ajudou a estruturar a empresa.' },
+    { tag: 'Mentor', name: 'Ascendy – Ale Ferreira', value: '+180K', period: 'seguidores construídos', desc: 'Mentor que ajudou a estruturar a empresa.' },
   ],
 
   founders: [
@@ -117,7 +117,7 @@ const DEFAULTS = {
   'faq-sub':     'Ainda com dúvidas? Fale diretamente com a nossa equipe no WhatsApp.',
   faq: [
     { q: 'Para qual tipo de empresa o Grupo Amplia atende?', a: 'Atendemos empresários de qualquer segmento que queiram estruturar seu comercial e escalar as vendas. Já atendemos moda (Colcci, Tommy Hilfiger, Track & Field), automotivo (Marlon Veículos, Chama Autocar, F4 Autocenter), gastronomia (Alecrim) e outros.' },
-    { q: 'Qual é o prazo para ver resultados?', a: 'Nossos clientes do setor automotivo já geramos resultados no 1º mês (R$350K para Marlon Veículos e R$100K para Chama Autocar). O prazo varia de acordo com o segmento e o ponto de partida do seu comercial, mas trabalhamos para gerar resultado o mais rápido possível.' },
+    { q: 'Qual é o prazo para ver resultados?', a: 'Nos cases do setor automotivo conseguimos implementar a operação completa de marketing e funil comercial já no primeiro mês (Marlon Veículos e Chama Autocar, por exemplo). O prazo varia conforme o segmento e o ponto de partida do seu negócio — mas trabalhamos para gerar tração o mais rápido possível.' },
     { q: 'Como funciona a Mentoria Comercial?', a: 'Montamos todos os seus processos comerciais do zero: pesquisa de ICP, script de cold call, processo de apresentação para gerar valor antes do preço, gestão de equipe e encontros 1x1 para estruturar e tirar dúvidas. Nossa taxa de fechamento em reuniões é de 60%.' },
     { q: 'Vocês trabalham com empresas de fora do Brasil?', a: 'Atualmente, nossa atuação é focada em empresas brasileiras. Se você tiver interesse em uma parceria internacional, entre em contato para conversarmos sobre viabilidade.' },
     { q: 'Como começar a trabalhar com o Grupo Amplia?', a: 'É simples: clique no botão "Falar com a equipe", entre em contato via WhatsApp ou Instagram, e nossa equipe vai apresentar as soluções mais adequadas para o seu negócio.' },
@@ -466,7 +466,7 @@ function addVideoRow(i, v = {}) {
   div.dataset.vidIdx = i;
   div.innerHTML = `
     <div class="form-grid">
-      <div class="field full"><label>Título</label><input type="text" id="vid-title-${i}" value="${v.title||''}" placeholder="Ex: Case João Silva — R$0 para R$50K" /></div>
+      <div class="field full"><label>Título</label><input type="text" id="vid-title-${i}" value="${v.title||''}" placeholder="Ex: Marlon Veículos — Motion 1" /></div>
       <div class="field full">
         <label>URL do vídeo</label>
         <input type="text" id="vid-url-${i}" value="${v.url||''}" placeholder="YouTube, Vimeo, Google Drive ou link .mp4" />
