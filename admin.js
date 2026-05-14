@@ -14,7 +14,7 @@ const DEFAULTS = {
 
   'h-eyebrow':  'A nossa proposta de valor',
   'h-pillar1':  'Identidade, conteúdo, audiovisual e tráfego pago numa operação de marketing completa — para você não depender só de indicação.',
-  'h-pillar2':  'Marcas como Tommy Hilfiger, Colcci, Marlon Veículos e F4 Autocenter no nosso portfólio. Antes de aplicar em você, aplicamos em nós mesmos.',
+  'h-pillar2':  'Marcas como Colcci, Track & Field, F4 Autocenter e Alecrim no nosso portfólio. Antes de aplicar em você, aplicamos em nós mesmos.',
   'h-cta':      'Falar no WhatsApp',
 
   'sb-eyebrow':     'Quem somos',
@@ -56,11 +56,9 @@ const DEFAULTS = {
   ],
 
   clients: [
-    { tag: 'Automotivo', name: 'Marlon Veículos', value: 'Funil completo', period: 'implementado no 1º mês', desc: 'Reestruturação completa do funil de vendas da concessionária — do lead à conversão.' },
     { tag: 'Automotivo', name: 'Chama Autocar', value: 'Operação estruturada', period: 'do zero no 1º mês', desc: 'Implementação do processo comercial completo para auto center, do marketing à abordagem do cliente.' },
     { tag: 'Moda', name: 'Colcci', value: 'Posicionamento', period: 'estratégia ativa', desc: 'Operação digital para uma das maiores marcas de moda do Brasil.' },
     { tag: 'Moda esportiva', name: 'Track & Field', value: 'Marketing ativo', period: 'campanha contínua', desc: 'Operação contínua de marketing e conteúdo para a marca de moda esportiva.' },
-    { tag: 'Moda premium', name: 'Tommy Hilfiger', value: '✓', period: 'parceria ativa', desc: 'Marca reconhecida mundialmente confiou no Grupo Amplia.' },
     { tag: 'Serviços', name: 'F4 Autocenter', value: '✓', period: 'parceria ativa', desc: 'Um dos maiores autocenters do Oeste de SC.' },
     { tag: 'Gastronomia', name: 'Alecrim', value: '✓', period: 'parceria ativa', desc: 'Um dos maiores empórios e cafeterias da região.' },
     { tag: 'Mentor', name: 'Ascendy – Ale Ferreira', value: '+180K', period: 'seguidores construídos', desc: 'Mentor que ajudou a estruturar a empresa.' },
@@ -106,9 +104,9 @@ const DEFAULTS = {
   // Hero trust bar
   'trust-label': 'Empresas que confiam em nós:',
   'trust-1':     'Colcci',
-  'trust-2':     'Tommy Hilfiger',
+  'trust-2':     'Alecrim',
   'trust-3':     'Track & Field',
-  'trust-4':     'Marlon Veículos',
+  'trust-4':     'Chama Autocar',
   'trust-5':     'F4 Autocenter',
 
   // FAQ
@@ -116,8 +114,8 @@ const DEFAULTS = {
   'faq-h2':      'Perguntas {frequentes}',
   'faq-sub':     'Ainda com dúvidas? Fale diretamente com a nossa equipe no WhatsApp.',
   faq: [
-    { q: 'Para qual tipo de empresa o Grupo Amplia atende?', a: 'Atendemos empresários de qualquer segmento que queiram estruturar seu comercial e escalar as vendas. Já atendemos moda (Colcci, Tommy Hilfiger, Track & Field), automotivo (Marlon Veículos, Chama Autocar, F4 Autocenter), gastronomia (Alecrim) e outros.' },
-    { q: 'Qual é o prazo para ver resultados?', a: 'Nos cases do setor automotivo conseguimos implementar a operação completa de marketing e funil comercial já no primeiro mês (Marlon Veículos e Chama Autocar, por exemplo). O prazo varia conforme o segmento e o ponto de partida do seu negócio — mas trabalhamos para gerar tração o mais rápido possível.' },
+    { q: 'Para qual tipo de empresa o Grupo Amplia atende?', a: 'Atendemos empresários de qualquer segmento que queiram estruturar seu marketing e escalar as vendas. Já atendemos moda (Colcci, Track & Field), automotivo (Chama Autocar, F4 Autocenter), gastronomia (Alecrim) e outros.' },
+    { q: 'Qual é o prazo para ver resultados?', a: 'Nos cases do setor automotivo conseguimos implementar a operação completa de marketing e funil comercial já no primeiro mês (Chama Autocar e F4 Autocenter, por exemplo). O prazo varia conforme o segmento e o ponto de partida do seu negócio — mas trabalhamos para gerar tração o mais rápido possível.' },
     { q: 'Como funciona a Mentoria Comercial?', a: 'Montamos todos os seus processos comerciais do zero: pesquisa de ICP, script de cold call, processo de apresentação para gerar valor antes do preço, gestão de equipe e encontros 1x1 para estruturar e tirar dúvidas. Nossa taxa de fechamento em reuniões é de 60%.' },
     { q: 'Vocês trabalham com empresas de fora do Brasil?', a: 'Atualmente, nossa atuação é focada em empresas brasileiras. Se você tiver interesse em uma parceria internacional, entre em contato para conversarmos sobre viabilidade.' },
     { q: 'Como começar a trabalhar com o Grupo Amplia?', a: 'É simples: clique no botão "Falar com a equipe", entre em contato via WhatsApp ou Instagram, e nossa equipe vai apresentar as soluções mais adequadas para o seu negócio.' },
@@ -466,7 +464,7 @@ function addVideoRow(i, v = {}) {
   div.dataset.vidIdx = i;
   div.innerHTML = `
     <div class="form-grid">
-      <div class="field full"><label>Título</label><input type="text" id="vid-title-${i}" value="${v.title||''}" placeholder="Ex: Marlon Veículos — Motion 1" /></div>
+      <div class="field full"><label>Título</label><input type="text" id="vid-title-${i}" value="${v.title||''}" placeholder="Ex: F4 Autocenter — Motion" /></div>
       <div class="field full">
         <label>URL do vídeo</label>
         <input type="text" id="vid-url-${i}" value="${v.url||''}" placeholder="YouTube, Vimeo, Google Drive ou link .mp4" />
