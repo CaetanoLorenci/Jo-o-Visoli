@@ -249,7 +249,9 @@ src="https://www.facebook.com/tr?id=1215484877184351&ev=PageView&noscript=1"/></
         <select name="faturamento" required><option value="" disabled selected>Selecione</option><option>Até R$ 20 mil</option><option>R$ 20 a 50 mil</option><option>R$ 50 a 100 mil</option><option>Acima de R$ 100 mil</option></select></div>
 
       <div class="field"><label>Qual sua maior dificuldade hoje?</label>
-        <select name="dificuldade" required><option value="" disabled selected>Selecione</option><option>Minha agenda depende de indicação</option><option>Já tentei agência e não veio resultado</option><option>Não tenho tempo de cuidar de marketing</option><option>Outro</option></select></div>
+        <select id="sel-dificuldade" name="dificuldade" required><option value="" disabled selected>Selecione</option><option>Minha agenda depende de indicação</option><option>Já tentei agência e não veio resultado</option><option>Não tenho tempo de cuidar de marketing</option><option>Outro</option></select></div>
+
+      <div class="field" id="field-dificuldade-outro" style="display:none"><label>Qual? Conta tua dificuldade</label><input type="text" name="dificuldade_outro" placeholder="Descreve em poucas palavras..."></div>
 
       <div class="field"><label>Você tem estrutura para atender mais clientes se a demanda aumentar?</label>
         <select name="estrutura" required><option value="" disabled selected>Selecione</option><option>Sim</option><option>Parcialmente</option><option>Não</option></select></div>
@@ -280,19 +282,21 @@ src="https://www.facebook.com/tr?id=1215484877184351&ev=PageView&noscript=1"/></
   });
 })();
 
-// Mostra o campo "Qual?" quando a área for "Outro serviço local"
+// Mostra um campo "Qual?" sempre que uma opção "Outro" for escolhida
 (function(){
-  var sel = document.getElementById('sel-area');
-  var field = document.getElementById('field-area-outro');
-  if(sel && field){
+  function bindOutro(selId, fieldId, triggerValue){
+    var sel = document.getElementById(selId);
+    var field = document.getElementById(fieldId);
+    if(!sel || !field) return;
     var inp = field.querySelector('input');
     sel.addEventListener('change', function(){
-      var isOutro = (sel.value === 'Outro serviço local');
-      field.style.display = isOutro ? 'block' : 'none';
-      if(inp) inp.required = isOutro;
-      if(!isOutro && inp) inp.value = '';
+      var on = (sel.value === triggerValue);
+      field.style.display = on ? 'block' : 'none';
+      if(inp){ inp.required = on; if(!on) inp.value = ''; }
     });
   }
+  bindOutro('sel-area', 'field-area-outro', 'Outro serviço local');
+  bindOutro('sel-dificuldade', 'field-dificuldade-outro', 'Outro');
 })();
 
 var WA_NUMBER = '5549936181867';
@@ -333,7 +337,7 @@ document.getElementById('form-aplicacao').addEventListener('submit', function(e)
     + 'Área: ' + encodeURIComponent((d.area === 'Outro serviço local' && d.area_outro) ? d.area_outro : (d.area || '')) + '%0A'
     + 'Negócio: ' + encodeURIComponent(d.negocio || '') + '%0A'
     + 'Faturamento: ' + encodeURIComponent(d.faturamento || '') + '%0A'
-    + 'Maior dificuldade: ' + encodeURIComponent(d.dificuldade || '') + '%0A'
+    + 'Maior dificuldade: ' + encodeURIComponent((d.dificuldade === 'Outro' && d.dificuldade_outro) ? d.dificuldade_outro : (d.dificuldade || '')) + '%0A'
     + 'Estrutura p/ crescer: ' + encodeURIComponent(d.estrutura || '') + '%0A'
     + 'Disponibilidade: ' + encodeURIComponent(d.disponibilidade || '');
   var waUrl = 'https://wa.me/' + WA_NUMBER + '?text=' + msg;
