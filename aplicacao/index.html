@@ -336,7 +336,11 @@ document.getElementById('form-aplicacao').addEventListener('submit', function(e)
     + 'Maior dificuldade: ' + encodeURIComponent(d.dificuldade || '') + '%0A'
     + 'Estrutura p/ crescer: ' + encodeURIComponent(d.estrutura || '') + '%0A'
     + 'Disponibilidade: ' + encodeURIComponent(d.disponibilidade || '');
-  window.location.href = 'https://wa.me/' + WA_NUMBER + '?text=' + msg;
+  var waUrl = 'https://wa.me/' + WA_NUMBER + '?text=' + msg;
+  var btn = f.querySelector('button[type="submit"]');
+  if(btn){ btn.textContent = 'Abrindo o WhatsApp...'; btn.style.opacity = '.7'; }
+  // delay garante que o evento Lead do pixel saia ANTES do redirect
+  setTimeout(function(){ window.location.href = waUrl; }, 600);
 });
 </script>
 
