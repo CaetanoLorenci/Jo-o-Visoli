@@ -337,10 +337,14 @@ document.getElementById('form-aplicacao').addEventListener('submit', function(e)
     + 'Estrutura p/ crescer: ' + encodeURIComponent(d.estrutura || '') + '%0A'
     + 'Disponibilidade: ' + encodeURIComponent(d.disponibilidade || '');
   var waUrl = 'https://wa.me/' + WA_NUMBER + '?text=' + msg;
-  var btn = f.querySelector('button[type="submit"]');
-  if(btn){ btn.textContent = 'Abrindo o WhatsApp...'; btn.style.opacity = '.7'; }
-  // delay garante que o evento Lead do pixel saia ANTES do redirect
-  setTimeout(function(){ window.location.href = waUrl; }, 600);
+
+  // A página NÃO navega pra fora — assim o evento Lead registra limpo e é rastreável.
+  // WhatsApp abre em aba nova + link de fallback caso o navegador bloqueie pop-up.
+  f.style.display = 'none';
+  var s2 = document.getElementById('form-status');
+  s2.style.display = 'block';
+  s2.innerHTML = '<h3>Aplicação enviada! 🎉</h3><p>Estamos te chamando no WhatsApp pra agendar sua Sessão Estratégica. Se não abrir sozinho, <a href="' + waUrl + '" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;text-decoration:underline">clica aqui pra abrir o WhatsApp</a>.</p>';
+  window.open(waUrl, '_blank');
 });
 </script>
 
