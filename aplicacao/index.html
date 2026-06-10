@@ -241,7 +241,9 @@ src="https://www.facebook.com/tr?id=1215484877184351&ev=PageView&noscript=1"/></
         <select name="negocio" required><option value="" disabled selected>Selecione</option><option>Sim, já atendo</option><option>Estou começando agora</option><option>Ainda não</option></select></div>
 
       <div class="field"><label>Sua área de atuação</label>
-        <select name="area" required><option value="" disabled selected>Selecione</option><option>Saúde (médico, dentista, clínica)</option><option>Jurídico</option><option>Estética</option><option>Outro serviço local</option></select></div>
+        <select id="sel-area" name="area" required><option value="" disabled selected>Selecione</option><option>Saúde (médico, dentista, clínica)</option><option>Jurídico</option><option>Estética</option><option>Outro serviço local</option></select></div>
+
+      <div class="field" id="field-area-outro" style="display:none"><label>Qual? Conta pra gente sua área</label><input type="text" name="area_outro" placeholder="Ex: pet shop, academia, oficina..."></div>
 
       <div class="field"><label>Faturamento mensal aproximado</label>
         <select name="faturamento" required><option value="" disabled selected>Selecione</option><option>Até R$ 20 mil</option><option>R$ 20 a 50 mil</option><option>R$ 50 a 100 mil</option><option>Acima de R$ 100 mil</option></select></div>
@@ -276,6 +278,21 @@ src="https://www.facebook.com/tr?id=1215484877184351&ev=PageView&noscript=1"/></
     var el = document.querySelector('input[name="'+k+'"]');
     if(el) el.value = p.get(k) || '';
   });
+})();
+
+// Mostra o campo "Qual?" quando a área for "Outro serviço local"
+(function(){
+  var sel = document.getElementById('sel-area');
+  var field = document.getElementById('field-area-outro');
+  if(sel && field){
+    var inp = field.querySelector('input');
+    sel.addEventListener('change', function(){
+      var isOutro = (sel.value === 'Outro serviço local');
+      field.style.display = isOutro ? 'block' : 'none';
+      if(inp) inp.required = isOutro;
+      if(!isOutro && inp) inp.value = '';
+    });
+  }
 })();
 
 var WA_NUMBER = '5549936181867';
@@ -313,7 +330,7 @@ document.getElementById('form-aplicacao').addEventListener('submit', function(e)
   // Qualificado / a nutrir → WhatsApp já com o contexto da aplicação
   var msg = 'Olá! Apliquei pra Sessão Estratégica da Amplia.%0A'
     + 'Nome: ' + encodeURIComponent(d.nome || '') + '%0A'
-    + 'Área: ' + encodeURIComponent(d.area || '') + '%0A'
+    + 'Área: ' + encodeURIComponent((d.area === 'Outro serviço local' && d.area_outro) ? d.area_outro : (d.area || '')) + '%0A'
     + 'Negócio: ' + encodeURIComponent(d.negocio || '') + '%0A'
     + 'Faturamento: ' + encodeURIComponent(d.faturamento || '') + '%0A'
     + 'Maior dificuldade: ' + encodeURIComponent(d.dificuldade || '') + '%0A'
